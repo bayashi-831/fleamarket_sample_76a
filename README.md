@@ -2,49 +2,127 @@
 
 # 76a DB設計
 
-##　usersテーブル
+## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_name|string|null: false|
-|furigana|string|null: false|
-|email|string|null: false|
-|password|string|null: false|
 |nickname|string|null: false|
-|birthday|integer|null: false|
-|postal_code|integer|null: false|
-|address|string|null: false|
+|password|string|null: false|
+|icon|string|null: false|
+|email|string|null: false|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
 |phone_number|integer|null: false|
-###　Association
+|birthday|integer|null: false|
+|introduction|string|null: false|
+### Association
 - has_many :items
-- has_many :payments
+- has_many :comments
+- has_many :favorites
+- has_many :reviews
 
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|image|text|null: false|
-|item_name|text|null: false|
+|name|string|null: false|
 |price|integer|null: false|
-|genre|string||
-|brand|string||
-|detail|text||
-|status|string|null: false|
+|introduction|text|null: false|
+|condition|string|null: false|
+|day|integer|null: false|
 |delivery_fee|string|null: false|
-|delivery_area|string|null: false|
-|delivery_day|integer|null:false|
-|user_id|integer|null: false, foreign_key: true|
-|payment_id|integer|null: false, foreign_key: true|
+|review_id|integer|null: false, foreign_key: true|
+|image_id|integer|null:false, foreign_key: true|
+|brand_id|integer|null: false, foreign_key: true|
+|genre_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :payment
+- has_many :comments
+- has_many :favorites
+- has_many :images
 
-## paymentsテーブル
+## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|credit_card|integer|null: false|
+|image|string|null: false|
+|item_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :item
+
+## brandsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### Association
+- has_many :items
+
+## genresテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### Association
+- has_many :items
+
+## creditcardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|card_number|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|expiration_year|integer|null: false|
+|expiration_month|integer|null: false|
+|security_code|integer|null: false|
+### Association
+- belongs_to :user
+
+## reviewsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|evaluation|string|null: false|
+|review|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :item
+
+## destinationsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|postal_code|integer|null: false|
+|prefecture|string|null: false|
+|city|string|null: false|
+|house_number|integer|null: false|
+|building_name|string|null: false|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|phone_number|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- has_many :item
+
+## favoritesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :item
+
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|comment|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :item
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
