@@ -13,14 +13,14 @@
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
-|phone_number|integer|null: false|
+|phone_number|string|null: false|
 |birthday|integer|null: false|
 |introduction|string|null: false|
 ### Association
-- has_many :items
-- has_many :comments
-- has_many :favorites
-- has_many :reviews
+- has_many :items, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :favorites, dependent: :destroy
+- has_many :reviews, dependent: :destroy
 
 ## itemsテーブル
 |Column|Type|Options|
@@ -32,14 +32,17 @@
 |day|integer|null: false|
 |delivery_fee|string|null: false|
 |review_id|integer|null: false, foreign_key: true|
-|image_id|integer|null:false, foreign_key: true|
 |brand_id|integer|null: false, foreign_key: true|
 |genre_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- has_many :comments
-- has_many :favorites
-- has_many :images
+- has_many :comments, dependent: :destroy
+- has_many :favorites, dependent: :destroy
+- has_many :images, dependent: :destroy
+- has_many :brands, dependent: :destroy
+- has_many :genres, dependent: :destroy
+- has_many :reviews, dependent: :destroy
+
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -92,12 +95,7 @@
 |prefecture|string|null: false|
 |city|string|null: false|
 |house_number|integer|null: false|
-|building_name|string|null: false|
-|family_name|string|null: false|
-|first_name|string|null: false|
-|family_name_kana|string|null: false|
-|first_name_kana|string|null: false|
-|phone_number|integer|null: false|
+|building_name|string||
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
