@@ -31,7 +31,6 @@
 |condition|string|null: false|
 |day|integer|null: false|
 |delivery_fee|string|null: false|
-|review_id|integer|null: false, foreign_key: true|
 |brand_id|integer|null: false, foreign_key: true|
 |genre_id|integer|null: false, foreign_key: true|
 ### Association
@@ -39,8 +38,8 @@
 - has_many :comments, dependent: :destroy
 - has_many :favorites, dependent: :destroy
 - has_many :images, dependent: :destroy
-- has_many :brands, dependent: :destroy
-- has_many :genres, dependent: :destroy
+- belongs_to :brand, dependent: :destroy
+- belongs_to :genre, dependent: :destroy
 - has_many :reviews, dependent: :destroy
 
 
@@ -63,7 +62,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|category_id|integer|null: false|
 |parent_id|integer|null: false|
 ### Association
 - has_many :items
