@@ -63,17 +63,18 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|category_id|integer|null: false|
+|parent_id|integer|null: false|
 ### Association
 - has_many :items
 
 ## creditcardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|expiration_year|integer|null: false|
+|card_brand|string|null: false|
+|last_four_number|integer|null: false|
 |expiration_month|integer|null: false|
-|security_code|integer|null: false|
+|expiration_year|integer|null: false|
 ### Association
 - belongs_to :user
 
@@ -92,7 +93,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|integer|null: false|
-|prefecture|string|null: false|
+|prefecture_id(active_hash)|integer|null: false|
 |city|string|null: false|
 |house_number|integer|null: false|
 |building_name|string||
