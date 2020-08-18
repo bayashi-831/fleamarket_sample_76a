@@ -33,6 +33,8 @@
 |delivery_fee|string|null: false|
 |brand_id|integer|null: false, foreign_key: true|
 |genre_id|integer|null: false, foreign_key: true|
+|buyer_id|integer|null: false, foreign_key: true|
+|seller_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - has_many :comments, dependent: :destroy
@@ -62,17 +64,15 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|parent_id|integer|null: false|
+|ancestry|string||
 ### Association
 - has_many :items
 
 ## creditcardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_brand|string|null: false|
-|last_four_number|integer|null: false|
-|expiration_month|integer|null: false|
-|expiration_year|integer|null: false|
+|user_id|string|null: false|
+|token_id|string|null: false|
 ### Association
 - belongs_to :user
 
@@ -142,3 +142,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
