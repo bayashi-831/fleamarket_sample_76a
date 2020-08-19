@@ -15,7 +15,7 @@
 |first_name_kana|string|null: false|
 |phone_number|string|null: false|
 |birthday|integer|null: false|
-|introduction|string|null: false|
+|introduction|text||
 ### Association
 - has_many :items, dependent: :destroy
 - has_many :comments, dependent: :destroy
