@@ -18,7 +18,7 @@
 
   }
 
-  .account-page__inner {
+  &__inner {
     width: 680px;
     height: 1800px;
     margin: 10px auto;
@@ -26,9 +26,7 @@
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
-  }  
-
-  .account-page__inner--login {
+    &--login {
       width: 680px;
       height: 350px;
       margin: 10px auto;
@@ -36,10 +34,12 @@
       background-color: #fff;
       border: 1px solid #ddd;
       border-radius: 5px;
-  
-  }
+    }
+  }  
 
-  .account-page__header {
+
+
+  &__header {
     h3 {
       margin-bottom: 10px;
       letter-spacing: 3px;
@@ -169,7 +169,7 @@
       }
     }
   }
-  .account-page__footer {
+  &__footer {
     padding-bottom: 20px;
     &--logo{
       text-align: center;
