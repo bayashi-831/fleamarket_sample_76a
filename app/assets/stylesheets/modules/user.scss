@@ -1,8 +1,7 @@
 .account-page {
   background-color: #f8f8f8;
-
-  .account-page__top {
-    .account-page__top--logo{
+  &__top {
+    &--logo{
       text-align: center;
       padding-top: 20px;
       .logo {
@@ -172,7 +171,7 @@
   }
   .account-page__footer {
     padding-bottom: 20px;
-    .account-page__footer--logo{
+    &--logo{
       text-align: center;
       padding-top: 20px;
       .logo {
@@ -186,7 +185,7 @@
         background-repeat: no-repeat;
       }
     }
-    .account-page__footer--text{
+    &--text{
       text-align: center;
       font-size: 5px;
     }
