@@ -61,6 +61,9 @@ end
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+gem 'devise'
+gem 'active_hash', '~> 2.3.0'
+gem 'haml-rails'
 
 group :test do
   # Adds support for Capybara system testing and selenium driver

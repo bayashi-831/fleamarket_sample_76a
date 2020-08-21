@@ -90,6 +90,7 @@
 ## destinationsテーブル
 |Column|Type|Options|
 |------|----|-------|
+
 |postal_code|integer|null: false|
 |prefecture_id(active_hash)|integer|null: false|
 |city|string|null: false|
