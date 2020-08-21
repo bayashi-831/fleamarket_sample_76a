@@ -243,9 +243,7 @@ img {
         line-height: 1.4em;
       }
     }
-    // 詳細は共通パーツのみ
-    // 配送は共通パーツのみ
-    // 価格部分
+    
     &__content{
       &__price{
         -webkit-box-align: center;
