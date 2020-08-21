@@ -90,12 +90,13 @@
 ## destinationsテーブル
 |Column|Type|Options|
 |------|----|-------|
+
 |postal_code|integer|null: false|
 |prefecture_id(active_hash)|integer|null: false|
 |city|string|null: false|
 |house_number|integer|null: false|
 |building_name|string||
-|user_id|integer|null: false, foreign_key: true|
+|user_id|integr|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
