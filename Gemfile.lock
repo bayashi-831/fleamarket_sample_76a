@@ -303,7 +303,6 @@ PLATFORMS
 DEPENDENCIES
   active_hash (~> 2.3.0)
   ancestry
- master
   bootsnap (>= 1.1.0)
   byebug
   capistrano
