@@ -1,5 +1,85 @@
+ user-registration-front
 %h1 Items#index
 .header__right
 = link_to "ログイン", new_user_session_path, class: "header__right--btn"
 = link_to "新規登録", new_user_registration_path, class: "header__right--btn"
 %p Find me in app/views/items/index.html.erb
+=======
+%header.pcHeader
+  .pcHeader__inner
+    .mainHeader
+      .icon  
+        %a{:href => "#"}
+          %img{:src="logo.png"}
+      .serchBox
+        %form{:action="#" method:"get"}
+          %input{:type => "hidden", :value => "#":,}
+          %input.searchBox-input{:id => "searchInput", :name => "key", :placeholder => "キーワードから探す"}
+          %button{:type => "submit"}
+            .searchBox__icon
+              %img{:src => "icon-search 1.png"} 
+          %input{:type => "hidden" name="authenticity_token" value="#"}
+        %ul.resultLists
+     
+    .nav
+      %ul.listsLeft
+        %li.listsLeft__item__first
+          %a{:id => "catBtn", :href => "#"}
+            カテゴリー
+          .tree-displayNone
+            %ul.categoryTree
+              %li.categoryTree__item
+        %li.listsLeft__item
+          %a{:id => "brandBtn", :href => "#"}
+            ブランド
+          %ul.brandsPulldown-displayNone
+      %ul.listsRight
+        %li.listsRight__item-login
+        %li.listsRight__item-new         
+
+  .main
+    %section.mainVisual
+      .content
+        %h2.content__subtitle
+          %br
+            "
+            人生を変えるフリマアプリ
+            "
+        %p.content__text
+          "
+          FURIMAはだれでもかんたんに出品・購入できる
+          "
+          %br
+          "
+          フリマアプリです
+          "
+        .content__btn
+          %a.aBtn
+            %img{:src => ""}
+          %a.gBtn
+            %img{:src => ""}
+        .picture
+    %section.topIntroduction
+    %section.topMiddleDl
+    %section.topKeyFeatures
+    %section.pickupContainer
+    %section.pickupContainer
+
+  %aside.appBanner
+
+  .footer
+
+  %a{:href => "#"}
+    
+  
+
+
+      
+      
+
+
+
+  .
+
+  
+ master
