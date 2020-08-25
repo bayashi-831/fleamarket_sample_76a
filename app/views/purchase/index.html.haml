@@ -1,0 +1,39 @@
+.header
+  .header__logo
+    = image_tag src="/assets/logo.png",size: "185x49"
+ 
+.main
+  .top
+    .top__name 
+      購入内容の確認
+  .contents
+    .contents__item
+      .contents__item--image
+        = image_tag src="/assets/test.jpg", size: "200x200"
+      .contents__item--name
+        YONEX　バドミントンシューズ
+      .contenst__item--price
+        送料込み（税込）￥1,500
+    .contents__payment
+      .contents__payment--price
+        支払い金額:￥1,500
+      .contents__payment--method
+        支払い方法を登録してください
+      .contents__payment--delivery
+        配送先を登録してください
+    .contents__btn
+      .contents__btn--alert
+        配送先と支払い方法の入力を完了してください。
+      .contents__btn--gray
+        .a
+        購入する
+    .footer
+      .footer__text
+        .footer__text--a
+          プライバシーポリシー
+        .footer__text--b
+          フリマ利用規約
+        .footer__text--c
+          特定商取引に関する表記
+      .footer__logo
+        = image_tag src="/assets/logo.png",size: "100x40"
