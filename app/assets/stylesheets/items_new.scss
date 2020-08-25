@@ -88,7 +88,7 @@ img {
   width: 100%;
   }
 }
-// ここより上は繰り返し使用するパーツ
+
 
 .sell {
   box-sizing: border-box;
@@ -199,10 +199,6 @@ img {
                   align-items: center;
                   justify-content: center;
                   position: relative;
-                  .camera_image{
-                    position: absolute;
-                    top: 30px;
-                  }
                   i{
                     box-sizing: border-box;
                     margin-bottom: 8px;
@@ -235,6 +231,7 @@ img {
         width: 100%;
         font-size: 16px;
         display: block;
+        resize: vertical;
       }
       &__word-count{
         text-align: right;

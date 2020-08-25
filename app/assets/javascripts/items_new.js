@@ -75,7 +75,7 @@ $(document).on('turbolinks:load', function(){
   });
 
   //販売価格入力時の手数料計算
-  $('#item_price').keyup(function(){
+  $('#price').keyup(function(){
     let price= $(this).val();
     if (price >= 300 && price <= 9999999){
       let fee = Math.floor(price * 0.1);
@@ -92,38 +92,38 @@ $(document).on('turbolinks:load', function(){
 
   $(function(){
     // カテゴリーセレクトボックスのオプションを作成
-    function categoryOption(category){
-      var optionHtml = `<option value="${category.id}">${category.name}</option>`;
+    function genreOption(genre){
+      var optionHtml = `<option value="${genre.id}">${genre.name}</option>`;
       return optionHtml;
     }
     // 親カテゴリー選択後のイベント
-    $('#category-select-parent').on('change', function(){
-      let parentCategoryId = $(this).val();
+    $('#genre-select').on('change', function(){
+      let parentGenreId = $(this).val();
       //選択された親カテゴリーのIDを取得
-      if (parentCategoryId == ''){
+      if (parentGenreId == ''){
         //親カテゴリーが空（初期値）の時
         $('#select-children-box').remove();
         $('#select-grandchildren-box').remove();
-        //子と孫を削除するする
+        //子と孫を削除する
       }else{
         $.ajax({
-          url: '/items/category_children',
+          url: '/items/genre_children',
           type: 'GET',
-          data: { parent_id: parentCategoryId },
+          data: { parent_id: parentGenreId },
           dataType: 'json'
         })
-        .done(function(category_children){
+        .done(function(genre_children){
           $('#select-children-box').remove();
           $('#select-grandchildren-box').remove();
-          //親が変更された時、子と孫を削除するする
+          //親が変更された時、子と孫を削除する
           let optionHtml = '';
-          category_children.forEach(function(child){
-            optionHtml += categoryOption(child);
+          genre_children.forEach(function(child){
+            optionHtml += genreOption(child);
             //option要素を作成する
           });
-          $('#error-category').before(`<div class="sell-collection_select " id="select-children-box">
-                                          <label class="sell-collection_select__label" for="item_category_id">
-                                            <select class="sell-collection_select__input" id="category-select-children" required="required" name="item[category_id]">
+          $('#error-genre').before(`<div class="sell-collection_select " id="select-children-box">
+                                          <label class="sell-collection_select__label" for="item_genre_id">
+                                            <select class="sell-collection_select__input" id="genre-select-children" required="required" name="item[genre_id]">
                                               <option value="">選択して下さい</option>
                                               ${optionHtml}
                                             </select>
@@ -138,31 +138,31 @@ $(document).on('turbolinks:load', function(){
       }
     });
     // 子カテゴリー選択後のイベント
-    $('.sell-container__content__details').on('change', '#category-select-children', function(){
-      let childrenCategoryId = $(this).val();
+    $('.sell-container__content__details').on('change', '#genre-select-children', function(){
+      let childrenGenreId = $(this).val();
       //選択された子カテゴリーのIDを取得
-      if (childrenCategoryId == ''){
+      if (childrenGenreId == ''){
         //子カテゴリーが空（初期値）の時
         $('#select-grandchildren-box').remove(); 
         //孫以下を削除する
       }else{
         $.ajax({
-          url: '/items/category_grandchildren',
+          url: '/items/genre_grandchildren',
           type: 'GET',
-          data: { child_id: childrenCategoryId },
+          data: { child_id: childrenGenreId },
           dataType: 'json'
         })
-        .done(function(category_grandchildren){
+        .done(function(genre_grandchildren){
           $('#select-grandchildren-box').remove();
-          //子が変更された時、孫を削除するする
+          //子が変更された時、孫を削除する
           let optionHtml = '';
-          category_grandchildren.forEach(function(grandchildren){
-            optionHtml += categoryOption(grandchildren);
+          genre_grandchildren.forEach(function(grandchildren){
+            optionHtml += genreOption(grandchildren);
             //option要素を作成する
           });
-          $('#error-category').before(`<div class="sell-collection_select " id="select-grandchildren-box">
-                                          <label class="sell-collection_select__label" for="item_category_id">
-                                            <select class="sell-collection_select__input" id="category-select-grandchildren" required="required" name="item[category_id]">
+          $('#error-genre').before(`<div class="sell-collection_select " id="select-grandchildren-box">
+                                          <label class="sell-collection_select__label" for="item_genre_id">
+                                            <select class="sell-collection_select__input" id="genre-select-grandchildren" required="required" name="item[genre_id]">
                                               <option value="">選択して下さい</option>
                                               ${optionHtml}
                                             </select>
@@ -248,27 +248,39 @@ $(document).on('turbolinks:load', function(){
     });
 
     //カテゴリーのエラーハンドリング
-    function categoryError(categorySelect){
-      let value = $(categorySelect).val();
+    function genreError(genreSelect){
+      let value = $(genreSelect).val();
       if(value == ""){
-        $('#error-category').text('選択して下さい');
-        $(categorySelect).css('border-color','red');
+        $('#error-genre').text('選択して下さい');
+        $(genreSelect).css('border-color','red');
       }else{
-        $('#error-category').text('');
-        $(categorySelect).css('border-color','rgb(204, 204, 204)');
+        $('#error-genre').text('');
+        $(genreSelect).css('border-color','rgb(204, 204, 204)');
       }
     };
     //親カテゴリー
-    $('#category-select-parent').on('blur',function(){
-      categoryError('#category-select-parent')
+    $('#genre-select-parent').on('blur',function(){
+      genreError('#genre-select-parent')
     });
     //子カテゴリー
-    $('.sell-container__content__details').on('blur', '#category-select-children', function(){
-      categoryError('#category-select-children')
+    $('.sell-container__content__details').on('blur', '#genre-select-children', function(){
+      genreError('#genre-select-children')
     });
     //孫カテゴリー
-    $('.sell-container__content__details').on('blur', '#category-select-grandchildren', function(){
-      categoryError('#category-select-grandchildren')
+    $('.sell-container__content__details').on('blur', '#genre-select-grandchildren', function(){
+      genreError('#genre-select-grandchildren')
+    });
+
+    // ブランド
+    $('#brand-select').on('blur',function(){
+      let value = $(this).val();
+      if(value == ""){
+        $('#error-brand').text('選択して下さい');
+        $(this).css('border-color','red');
+      }else{
+        $('#error-brand').text('');
+        $(this).css('border-color','rgb(204, 204, 204)');
+      }
     });
 
     //状態
