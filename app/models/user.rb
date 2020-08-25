@@ -22,5 +22,17 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true,
   format: { with: /[^-｡-ﾟ]+/}
   validates :birthday, presence: true
+  validates :destination_family_name, presence: true,
+  format: { with: /[^-｡-ﾟ]+/}
+  validates :destination_first_name, presence: true,
+  format: { with: /[^-｡-ﾟ]+/}
+  validates :destination_family_name_kana, presence: true,
+  format: { with: /[^-｡-ﾟ]+/}
+  validates :destination_first_name_kana, presence: true,
+  format: { with: /[^-｡-ﾟ]+/}
+  validates :postal_code, presence: true
+  validates :prefecture_id, presence: true
+  validates :city, presence: true
+  validates :house_number, presence: true
  
 end
