@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_21_002600) do
+ActiveRecord::Schema.define(version: 2020_08_23_121211) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -31,19 +31,6 @@ ActiveRecord::Schema.define(version: 2020_08_21_002600) do
     t.string "token_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "postal_code", null: false
-    t.integer "prefecture_id", null: false
-    t.string "city", null: false
-    t.integer "house_number", null: false
-    t.string "building_name"
-    t.integer "user_id", null: false
-    t.string "family_name", null: false
-    t.string "first_name", null: false
-    t.string "family_name_kana", null: false
-    t.string "first_name_kana", null: false
   end
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -107,6 +94,16 @@ ActiveRecord::Schema.define(version: 2020_08_21_002600) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "postal_code"
+    t.integer "prefecture_id"
+    t.string "city"
+    t.string "house_number"
+    t.string "building_name"
+    t.string "destination_family_name"
+    t.string "destination_first_name"
+    t.string "destination_family_name_kana"
+    t.string "destination_first_name_kana"
+    t.string "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
