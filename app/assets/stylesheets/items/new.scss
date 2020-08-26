@@ -36,6 +36,19 @@ img {
     font-weight: 600;
     line-height: 1.4em;
     margin: 0;
+    &__common{
+      margin-left: 8px;
+      font-size: 12px;
+      padding: 0 4px;
+      background-color: #bfbfbf;
+      color: #fff;
+      border-radius: 2px;
+      display: inline-block;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 1.4em;
+      margin: 0;
+    }
   }
 }
 
@@ -240,7 +253,18 @@ img {
         line-height: 1.4em;
       }
     }
-    
+
+    &__content{
+      &__brand{
+        margin-top: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 48px;
+        padding: 0 16px;
+        width: 100%;
+      }
+    }
     &__content{
       &__price{
         -webkit-box-align: center;
