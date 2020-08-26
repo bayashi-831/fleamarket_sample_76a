@@ -7,6 +7,12 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :reviews, dependent: :destroy
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :pref
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :delivery_fee
+  belongs_to_active_hash :day
+
   def images_presence
     if images.attached?
       # inputに保持されているimagesがあるかを確認

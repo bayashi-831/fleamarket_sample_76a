@@ -25,6 +25,10 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
+  def authenticate_user!
+  end
+
   private
 
   def item_params
