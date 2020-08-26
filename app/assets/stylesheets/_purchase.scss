@@ -1,0 +1,100 @@
+.header{
+  text-align: center;
+  padding: 50px 0 50px;
+  background-color: rgb(245,245,245);
+  cursor: pointer;
+}
+
+.main{
+  background-color: rgb(245,245,245);
+
+}
+.top{
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  padding: 50px 0 50px;
+  background-color: #ffffff;
+  margin: 0px 350px 0px 350px;
+}
+
+.contents{
+  text-align: center;
+  background-color: #ffffff;
+  margin: 0px 350px 0px 350px;
+  &__item{
+    padding-bottom: 50px;
+    font-size: 14px;
+    &--name{
+      margin-bottom: 8px;
+    }
+    &--price{
+      font-weight: bold;
+    }
+  }
+  &__payment{
+    padding-bottom: 30px;
+    &--price{
+      font-size: 20px;
+      font-weight: bold;
+      padding-bottom: 100px;
+    }
+    &--method{
+      padding-bottom: 30px;
+      color: rgb(0,149,238);
+      cursor: pointer;
+    }
+    &--delivery{
+      padding-bottom: 30px;
+      color: rgb(0,149,238);
+      cursor: pointer;
+    }
+  }
+  &__btn{
+    padding-bottom: 100px;
+    &--alert{
+      font-size: 14px;
+      color: red;
+      margin-bottom: 24px;
+    }
+    &--gray{
+      display: inline-block;
+      border-radius: 5%;
+      width: 343px;
+      background-color: #ccc;
+      color: #888;
+      cursor: pointer;
+      font-size: 17px;
+      min-height: 48px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      .a{
+        padding-top: 10px;;
+      }
+    }
+  }
+}
+
+.footer{
+  background-color: rgb(245,245,245);
+  &__text{
+    font-size: 11px;
+    padding: 40px 0px 50px;
+    display: flex;
+    &--a{
+      cursor: pointer;
+      padding:0px 20px 0px 150px;
+    }
+    &--b{
+      cursor: pointer;
+      padding: 0px 20px;
+    }
+    &--c{
+      cursor: pointer;
+      padding: 0px 150px 0px 20px;
+    }
+  }
+  &__logo{
+    padding-bottom: 20px;
+  }
+}
