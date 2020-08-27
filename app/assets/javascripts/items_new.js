@@ -47,6 +47,8 @@ $(document).on('turbolinks:load', function(){
     });
   });
 
+  
+
   //削除ボタンが押された時
   $(document).on('click', '.preview-image__button__delete', function(){
     let targetImageId = $(this).data('image-id');
@@ -75,7 +77,7 @@ $(document).on('turbolinks:load', function(){
   });
 
   //販売価格入力時の手数料計算
-  $('#price').keyup(function(){
+  $('#item_price').keyup(function(){
     let price= $(this).val();
     if (price >= 300 && price <= 9999999){
       let fee = Math.floor(price * 0.1);

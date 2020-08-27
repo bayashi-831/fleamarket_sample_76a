@@ -3,7 +3,7 @@
     = image_tag 'logo.png', alt: 'Furima', height: '55', width: '185'
   %main
     %section.sell-container
-      = form_with model: @items do |f|
+      = form_with model: @item, url: items_path do |f|
 
         -# 画像部分
         .sell-container__content
@@ -22,8 +22,7 @@
                       = f.file_field :images, multiple: true, class: "sell-container__content__upload__items__box__input", id: "item_images0", style: 'display: none;'
                       %pre
                         %i.fas.fa-camera.fa-lg
-                        ドラッグアンドドロップ
-                        またはクリックしてファイルをアップロード
+                        クリックしてファイルをアップロード
           .error-messages#error-image
 
         -# 商品名部分

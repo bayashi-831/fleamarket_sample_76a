@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
+
   def index
   end
+
   def new
     @item = Item.new
     @genre_parent =  Genre.where("ancestry is null")
@@ -18,7 +20,10 @@ class ItemsController < ApplicationController
   end
 
   def create
+    binding.pry
     @item = Item.new(item_params)
+    @genre_parent =  Genre.where("ancestry is null")
+
     if @item.save
       redirect_to root_path
     else
@@ -32,6 +37,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :text, :genre_id, :condition, :delivery_fee, :pref, :day, :price, images: [])
+    params.require(:item).permit(:name, :text, :genre_id, :brand, :condition_id, :delivery_fee_id, :pref_id, :day_id, :price, images: [])
   end
 end
