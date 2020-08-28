@@ -5,12 +5,13 @@ class Item < ApplicationRecord
   has_many :images, dependent: :destroy
   belongs_to :genre
   has_many :reviews, dependent: :destroy
+  accepts_nested_attributes_for :images, allow_destroy: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :pref
-  belongs_to_active_hash :condition
-  belongs_to_active_hash :delivery_fee
-  belongs_to_active_hash :day
+  belongs_to_active_hash :pref, presence: true
+  belongs_to_active_hash :condition, presence: true
+  belongs_to_active_hash :delivery_fee, presence: true
+  belongs_to_active_hash :day, presence: true
 
   def images_presence
     if images.attached?

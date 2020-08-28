@@ -5,7 +5,12 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.images.build
     @genre_parent =  Genre.where("ancestry is null")
+    @condition = Condition.all
+    @delivery_fee = DeliveryFee.all
+    @pref = Pref.all
+    @day = Day.all
   end
   # 親ジャンルが選択された後に動くアクション
   def genre_children
@@ -20,13 +25,16 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
     @item = Item.new(item_params)
-    @genre_parent =  Genre.where("ancestry is null")
-
+    binding.pry
     if @item.save
       redirect_to root_path
     else
+      @genre_parent =  Genre.where("ancestry is null")
+      @condition = Condition.all
+      @delivery_fee = DeliveryFee.all
+      @pref = Pref.all
+      @day = Day.all
       render :new
     end
   end
@@ -37,6 +45,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :text, :genre_id, :brand, :condition_id, :delivery_fee_id, :pref_id, :day_id, :price, images: [])
+    params.require(:item).permit(:name, :introduction, :genre_id, :brand, :condition_id, :delivery_fee_id, :pref_id, :day_id, :price, images_attributes: [:image]).merge(seller_id: current_user.id)
   end
 end

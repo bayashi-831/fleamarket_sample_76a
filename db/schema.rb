@@ -52,14 +52,14 @@ ActiveRecord::Schema.define(version: 2020_08_23_121211) do
     t.string "name", null: false
     t.integer "price", null: false
     t.text "introduction", null: false
-    t.string "condition", null: false
-    t.string "day", null: false
-    t.string "delivery_fee", null: false
+    t.integer "condition_id", null: false
+    t.integer "day_id", null: false
+    t.integer "delivery_fee_id", null: false
     t.string "brand"
-    t.string "pref", null: false
+    t.integer "pref_id", null: false
     t.integer "genre_id", null: false
     t.integer "buyer_id", null: false
-    t.integer "seller_id", null: false
+    t.integer "seller_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
