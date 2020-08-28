@@ -81,22 +81,6 @@
 - belongs_to :user
 - belongs_to :item
 
-## destinationsテーブル
-|Column|Type|Options|
-|------|----|-------|
-
-|postal_code|integer|null: false|
-|prefecture_id(active_hash)|integer|null: false|
-|city|string|null: false|
-|house_number|integer|null: false|
-|building_name|string||
-|user_id|integer|null: false, foreign_key: true|
-|family_name|string|null: false|
-|first_name|string|null: false|
-|family_name_kana|string|null: false|
-|first_name_kana|string|null: false|
-### Association
-- belongs_to :user
 
 ## favoritesテーブル
 |Column|Type|Options|
