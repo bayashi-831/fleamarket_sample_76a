@@ -13,10 +13,10 @@
     %p.inner__text
       今すぐ無料ダウンロード
     .innner__icon        
-      %a.gBtn{:href => "#"}
+      =link_to "#", class: "aBtn"
+        = image_tag 'icon/Download_on_the_App_Store_Badge_JP_blk_.png'
+      =link_to "#", class: "gBtn"
         = image_tag "icon/google-play-badge.png"
-      %a.aBtn{:href => "#"}
-        = image_tag "icon/Download_on_the_App_Store_Badge_JP_blk_.png"
 
 .home-footer
   = render 'top-footer'

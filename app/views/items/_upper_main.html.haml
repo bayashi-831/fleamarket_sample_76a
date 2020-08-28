@@ -8,10 +8,10 @@
       %br
         フリマアプリです
     .btn
-      %a.aBtn{:href => "#"}
-        = image_tag 'icon/Download_on_the_App_Store_Badge_JP_blk_.png'         
-      %a.gBtn{:href => "#"}
-        = image_tag 'icon/google-play-badge.png'
+      =link_to "#", class: "aBtn"
+        = image_tag 'icon/Download_on_the_App_Store_Badge_JP_blk_.png'
+      =link_to "#", class: "gBtn"
+        = image_tag "icon/google-play-badge.png"
   .picture
 
 %section.topIntroduction
