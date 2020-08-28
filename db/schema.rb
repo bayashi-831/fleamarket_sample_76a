@@ -69,6 +69,13 @@ ActiveRecord::Schema.define(version: 2020_08_23_121211) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "evaluation", null: false
     t.text "review", null: false
@@ -79,7 +86,6 @@ ActiveRecord::Schema.define(version: 2020_08_23_121211) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-
     t.string "nickname", null: false
     t.string "icon"
     t.string "family_name", null: false
@@ -90,13 +96,11 @@ ActiveRecord::Schema.define(version: 2020_08_23_121211) do
     t.text "introduction"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
     t.string "postal_code"
     t.integer "prefecture_id"
     t.string "city"
@@ -107,7 +111,6 @@ ActiveRecord::Schema.define(version: 2020_08_23_121211) do
     t.string "destination_family_name_kana"
     t.string "destination_first_name_kana"
     t.string "phone_number"
-
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

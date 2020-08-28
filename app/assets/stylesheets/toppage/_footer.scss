@@ -34,16 +34,16 @@
     }
 
 
-.footer{
+.home-footer{
   padding: 60px 0;
   text-align: center;
   color: $white;
   background-color: #272727;
-  .contents{
+  .home-contents{
     max-width: 840px;
     margin: 0 auto;
     display: flex;
-    .content{
+    .home-content{
       display: flex;
       flex-direction: column;
       width: calc(1/3*100%);

@@ -63,10 +63,26 @@
           ブランド
         %ul.brandsPulldown-displayNone
     %ul.listsRight
-      %li.listsRight__item-login
-        %a{:id => "Btn",:href => "#"}
-          ログイン
-      %li.listsRight__item-new
-        %a{:id => "Btn",:href => "#"}
-          新規会員登録
-          
+      -if user_signed_in?
+        %li.listsRight__item
+          = link_to "マイページ", new_post_path, id: "Btn"
+        %li.listsRight__item
+          = link_to "ログアウト", destroy_user_session_path, method: :delete, id: "Btn"
+      - else
+        %li.listsRight__item
+          = link_to "ログイン", new_user_session_path,  id: "Btn" 
+        %li.listsRight__item
+          = link_to "新規会員登録", new_user_registration_path, id: "Btn" 
+
+
+
+-# %h1 Items#index
+-# -if user_signed_in?
+-#   .header__right
+-#   = link_to "マイページ", class: "header__right--btn"
+-#   = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__right--btn"
+-# -else
+-#   .header__right1
+-#   = link_to "ログイン", new_user_session_path, class: "header__right1--btn"
+-#   = link_to "新規登録", new_user_registration_path, class: "header__right1--btn"
+-# %p Find me in app/views/items/index.html.erb

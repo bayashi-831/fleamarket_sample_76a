@@ -113,6 +113,7 @@
           //       background-repeat: no-repeat;
           //       background-size: 18px;
           //       padding-right: 30px;
+
         }
       }
     }
@@ -120,8 +121,19 @@
     .listsRight{
       margin-left: auto;
       display: flex;
+      text-decoration: none;
+      padding: 0px;
     }
-            
+    // .listsRight__item {
+    //   color: $gray;
+    //   text-decoration: none;
+    //   line-height: 32px;
+    //   background-position: center right;
+    //   background-repeat: no-repeat;
+    //   background-size: 18px;
+    //   padding-right: 30px;
+
+    // }      
 
         
         
