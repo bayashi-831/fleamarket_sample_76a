@@ -83,7 +83,6 @@ group :production do
   gem 'unicorn'
 end
 
-  gem 'haml-rails'
-  gem 'devise'
-  gem 'font-awesome-sass'
-  gem 'font-awesome-rails'
+gem 'haml-rails'
+gem "font-awesome-sass"
+gem 'jquery-rails'
