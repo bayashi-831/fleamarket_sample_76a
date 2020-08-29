@@ -1,6 +1,20 @@
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "option/color";
+@import "modules/reset";
+@import "toppage/header";
+@import "toppage/upper_main";
+@import "toppage/middle_main";
+@import "toppage/under_main";
+@import "toppage/footer";
+@import "toppage/btn";
 @import "purchase";
 @import "modules/user";
 @import "config/reset";
+@import "items/new.scss";
 @import "config/colors";
 @import "config/font-size";
 @import "modules/flash";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+

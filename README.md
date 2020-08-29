@@ -29,9 +29,10 @@
 |price|integer|null: false|
 |introduction|text|null: false|
 |condition|string|null: false|
-|day|integer|null: false|
+|day|string|null: false|
 |delivery_fee|string|null: false|
-|brand_id|integer|null: false, foreign_key: true|
+|brand|string|
+|pref|string|null: false|
 |genre_id|integer|null: false, foreign_key: true|
 |buyer_id|integer|null: false, foreign_key: true|
 |seller_id|integer|null: false, foreign_key: true|
@@ -40,7 +41,6 @@
 - has_many :comments, dependent: :destroy
 - has_many :favorites, dependent: :destroy
 - has_many :images, dependent: :destroy
-- belongs_to :brand
 - belongs_to :genre
 - has_many :reviews, dependent: :destroy
 
@@ -53,12 +53,6 @@
 ### Association
 - belongs_to :item
 
-## brandsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :items
 
 ## genresテーブル
 |Column|Type|Options|
@@ -87,22 +81,6 @@
 - belongs_to :user
 - belongs_to :item
 
-## destinationsテーブル
-|Column|Type|Options|
-|------|----|-------|
-
-|postal_code|integer|null: false|
-|prefecture_id(active_hash)|integer|null: false|
-|city|string|null: false|
-|house_number|integer|null: false|
-|building_name|string||
-|user_id|integer|null: false, foreign_key: true|
-|family_name|string|null: false|
-|first_name|string|null: false|
-|family_name_kana|string|null: false|
-|first_name_kana|string|null: false|
-### Association
-- belongs_to :user
 
 ## favoritesテーブル
 |Column|Type|Options|
