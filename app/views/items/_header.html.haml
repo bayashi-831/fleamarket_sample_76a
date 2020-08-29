@@ -1,7 +1,7 @@
 .headerInner
   .mainHeader
     %h1.icon  
-      =link_to "/",class: "top-icon"
+      =link_to "/",class: "top-icon" do
         = image_tag 'logo/logo.png'
     .serchBox
       %form{:action => "#", :method => "get", :accept_charset => "UTF-8"}
@@ -15,9 +15,9 @@
   .nav
     %ul.listsLeft
       %li.listsLeft__item--first
-        = link_to "カテゴリー", "#" ,id: "Btn"
+        = link_to "カテゴリー", "#" ,id: "Btn" 
       %li.listsLeft__item
-        = link_to "ブランド", "#" ,id: "Btn"
+        = link_to "ブランド", "#" ,id: "Btn" 
         %ul.brandsPulldown-displayNone
     %ul.listsRight
       -if user_signed_in?
