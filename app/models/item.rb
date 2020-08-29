@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :images, dependent: :destroy
