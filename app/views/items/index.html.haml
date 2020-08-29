@@ -1,7 +1,7 @@
 %h1 Items#index
 -if user_signed_in?
   .header__right
-  = link_to "マイページ", class: "header__right--btn"
+  = link_to "マイページ", mypage_path, class: "header__right--btn"
   = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__right--btn"
 -else
   .header__right1

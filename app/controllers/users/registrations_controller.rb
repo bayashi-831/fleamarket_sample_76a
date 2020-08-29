@@ -18,6 +18,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def mypage
+  end
+
+  def logout_page
+  end
+
+  def creditcard
+  end
   # GET /resource/edit
   # def edit
   #   super
