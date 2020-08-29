@@ -84,5 +84,6 @@ group :production do
 end
 
 gem 'haml-rails'
-gem "font-awesome-sass"
+gem 'font-awesome-sass'
+gem 'font-awesome-rails'
 gem 'jquery-rails'
