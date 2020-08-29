@@ -1,3 +1,4 @@
+
 /*
 	TODO will need to remove settings on HTML since we can't namespace it.
 	TODO with the prefix, should I group by selector or property for weight savings?
@@ -38,6 +39,7 @@ p,
 blockquote,
 th,
 td {
+
 	margin:0;
 	padding:0;
 }
@@ -51,6 +53,7 @@ img {
 }
 /*
 	TODO think about hanlding inheritence differently, maybe letting IE6 fail a bit...
+
 */
 address,
 caption,
@@ -61,9 +64,10 @@ em,
 strong,
 th,
 var {
-	font-style:normal;
-	font-weight:normal;
-}
+  font-style:normal;
+  font-weight:normal;
+
+
 
 ol,
 ul {
@@ -111,4 +115,4 @@ select {
 legend {
 	color:#000;
 }
-
+}
