@@ -18,7 +18,7 @@ $(document).on('turbolinks:load', function(){
           let imageLength = $('#output-box').children('li').length;
           // 表示されているプレビューの数を数える
 
-          let labelLength = $("#image-input>fields_for").eq(-1).data('label-id');
+          let labelLength = $("fields_for").eq(-1).data('label-id');
           // #image-inputの子要素labelの中から最後の要素のカスタムデータidを取得
 
           // プレビュー表示
@@ -37,7 +37,7 @@ $(document).on('turbolinks:load', function(){
           if (imageLength < 9) {
             // 表示されているプレビューが９以下なら、新たにinputを生成する
             $("#image-input").append(`<fields_for class="sell-container__content__upload__items__box__label" data-id="${labelLength+1}">
-                                        <input multiple="multiple" class="sell-container__content__upload__items__box__input" id="item_images${labelLength+1}" type="file" name="item[images_attributes][${labelLength+1}]">
+                                        <input class="sell-container__content__upload__items__box__input" id="item_images${labelLength+1}" type="file" name="item[images_attributes][]">
                                         <i class="fas fa-camera fa-lg"></i>
                                       </fields_for>`);
           };
