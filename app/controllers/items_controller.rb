@@ -13,12 +13,14 @@ class ItemsController < ApplicationController
     @day = Day.all
   end
   # 親ジャンルが選択された後に動くアクション
+
   def genre_children
     @genre_children = Genre.find("#{params[:parent_id]}").children
     #親ジャンルに紐付く子ジャンルを取得
   end
 
   # 子ジャンルが選択された後に動くアクション
+  
   def genre_grandchildren
     @genre_grandchildren = Genre.find("#{params[:child_id]}").children
     #子ジャンルに紐付く孫ジャンルの配列を取得
