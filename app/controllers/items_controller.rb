@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.images.build
     @genre_parent =  Genre.where("ancestry is null")
     @condition = Condition.all
     @delivery_fee = DeliveryFee.all
@@ -28,6 +27,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    # binding.pry
     if @item.save
       redirect_to root_path
     else
@@ -43,6 +43,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :introduction, :genre_id, :brand, :condition_id, :delivery_fee_id, :pref_id, :day_id, :price, images_attributes: [:image, :id]).merge(buyer_id: current_user.id)
+    params.require(:item).permit(:name, :introduction, :genre_id, :brand, :condition_id, :delivery_fee_id, :pref_id, :day_id, :price, images: []).merge(seller_id: current_user.id)
   end
 end

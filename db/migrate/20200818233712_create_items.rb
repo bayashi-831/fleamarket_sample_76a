@@ -10,8 +10,8 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :brand
       t.integer :pref_id, null: false
       t.integer :genre_id, null: false, foreign_key: true
-      t.integer :buyer_id, null: false, foreign_key: true
-      t.integer :seller_id, foreign_key: true
+      t.integer :buyer_id, foreign_key: true
+      t.integer :seller_id, null: false,foreign_key: true
 
       t.timestamps
     end
