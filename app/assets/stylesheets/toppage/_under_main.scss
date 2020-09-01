@@ -33,7 +33,7 @@
         width: 220px;
         display: inline-block;
         float: left;
-        .itemsphoto{
+        .goodsshow{
           background-color: $white;
           display: inline-block;
           &__img{
@@ -43,7 +43,7 @@
             overflow: hidden;
             margin: 0;
             z-index: auto;
-            img{
+            .itemsphoto{
               position: absolute;
               top: 0;
               left: 0;
@@ -53,11 +53,19 @@
               z-index: auto;
               height: 150px;                
               object-fit: cover;
+
+                }
+              }
+              
               }
           }
         }
-      }
-    }
+
+          img{
+            width: 100%;
+            vertical-align: bottom;
+          }
+        
           .productList__body{
             background-color:$white;
             color: $gray;
@@ -77,13 +85,17 @@
                 li{
                   margin: 0;
                   padding: 0;
-                  .star{
+                  .fa{
                     display: inline-block;
                     font: normal normal normal 14px/1 FontAwesome;
                     font-size: inherit;
                     text-rendering: auto;
                     -webkit-font-smoothing: antialiased;
-                      }  
+                    ::before{
+                      content: "\f005";
+                    }
+                      } 
+
               p{
                 font-size: 10px;
                 text-align: left;
@@ -91,6 +103,10 @@
     }
   }
 }
+}
+
+.pickupContainer:last-child{
+  padding-bottom: 80px;
 }
 
 
