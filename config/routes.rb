@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 devise_for :users
+devise_scope :user do
+  get 'my_page' => 'users/registrations#my_page'
+  get 'logout_page' => 'users/registrations#logout_page'
+end
 root 'items#index'
 devise_scope :user do
   get 'mypage' => 'users/registrations#mypage'

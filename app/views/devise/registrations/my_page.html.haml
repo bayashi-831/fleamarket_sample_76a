@@ -1,0 +1,22 @@
+.mypage
+  .mypage__profile
+    .mypage__profile__icon
+      .figure
+      %h2.nickname
+        = current_user.nickname
+      .mypage__profile__icon__number
+        %span 評価
+        %span 出品数
+  .mypage__content
+    .mypage__content__nav
+      %h3.mypage__content__nav__head
+        設定
+      %ul.mypage__content__nav__list
+        %li
+          = link_to "プロフィール", class: "mypage__content__nav__list__item"
+        %li
+          = link_to "発送元・お届け先住所変更", class: "mypage__content__nav__list__item"
+        %li
+          = link_to "支払い方法", class: "mypage__content__nav__list__item"
+        %li
+          = link_to "ログアウト", logout_page_path, class: "mypage__content__nav__list__item"

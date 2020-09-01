@@ -1,0 +1,8 @@
+.logoutpage
+  .l-content
+    .l-content__container
+      %form{:action => "destroy_user_session_path", :method => "POST"}
+        .l-single-content
+          %button{:type => "submit", :class => "btn-default btn-red"}
+            ログアウト
+
