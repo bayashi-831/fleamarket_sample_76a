@@ -6,10 +6,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @genre_parent =  Genre.where("ancestry is null")
-    @condition = Condition.all
-    @delivery_fee = DeliveryFee.all
-    @pref = Pref.all
-    @day = Day.all
   end
   # 親ジャンルが選択された後に動くアクション
 
@@ -27,15 +23,9 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    # binding.pry
     if @item.save
       redirect_to root_path
     else
-      @genre_parent =  Genre.where("ancestry is null")
-      @condition = Condition.all
-      @delivery_fee = DeliveryFee.all
-      @pref = Pref.all
-      @day = Day.all
       render :new
     end
   end

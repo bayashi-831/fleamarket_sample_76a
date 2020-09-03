@@ -54,7 +54,6 @@ describe Item do
 
     it "is invalid without a price" do
       item = build(:item, price: nil)
-      # binding.pry
       item.valid?
       expect(item.errors[:price]).to include("を入力してください")
     end
