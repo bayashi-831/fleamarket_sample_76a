@@ -86,4 +86,4 @@ end
 gem 'haml-rails'
 gem "font-awesome-sass"
 gem 'jquery-rails'
-gem 'carrierwave'
+gem 'aws-sdk-s3'

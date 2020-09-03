@@ -1,6 +1,6 @@
 .sell
   %header.sell-header
-    = image_tag ('logo.png'), alt: 'Furima', height: '55',class: 'header-logo'
+    = link_to image_tag('logo.png'), root_path, alt: 'Furima', height: '55', class: 'header-logo'
   %main
     %section.sell-container
       = form_with model: @item, url: items_path do |f|
