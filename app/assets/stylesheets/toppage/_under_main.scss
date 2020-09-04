@@ -11,13 +11,13 @@
   .productBox{
     margin: 0;
     padding: 0;
-    .productHead{
+    &__productHead{
       text-align: center;
-      .pickup{
+      &__pickup{
         font-size: 24px;
         text-decoration: none;
         color: $blue;
-        .title{
+        &__title{
           font-weight: bold;
       }
       }
@@ -29,11 +29,11 @@
       margin: 26px auto;
       display: flex;
       justify-content: space-around;
-      .productList{
+      &__productList{
         width: 220px;
         display: inline-block;
         float: left;
-        .goodsshow{
+        &__goodsshow{
           background-color: $white;
           display: inline-block;
           &__img{
@@ -43,7 +43,7 @@
             overflow: hidden;
             margin: 0;
             z-index: auto;
-            .itemsphoto{
+            &__itemsphoto{
               position: absolute;
               top: 0;
               left: 0;
@@ -61,11 +61,6 @@
           }
         }
 
-          img{
-            width: 100%;
-            vertical-align: bottom;
-          }
-        
           .productList__body{
             background-color:$white;
             color: $gray;
