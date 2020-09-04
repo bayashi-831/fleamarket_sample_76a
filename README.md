@@ -15,7 +15,7 @@
 |first_name_kana|string|null: false|
 |phone_number|string|null: false|
 |birthday|integer|null: false|
-|introduction|string|null: false|
+|introduction|text||
 ### Association
 - has_many :items, dependent: :destroy
 - has_many :comments, dependent: :destroy
@@ -29,50 +29,36 @@
 |price|integer|null: false|
 |introduction|text|null: false|
 |condition|string|null: false|
-|day|integer|null: false|
+|day|string|null: false|
 |delivery_fee|string|null: false|
-|brand_id|integer|null: false, foreign_key: true|
+|brand|string|
+|pref|string|null: false|
 |genre_id|integer|null: false, foreign_key: true|
+|buyer_id|integer|null: false, foreign_key: true|
+|seller_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - has_many :comments, dependent: :destroy
 - has_many :favorites, dependent: :destroy
-- has_many :images, dependent: :destroy
-- belongs_to :brand
+- has_many_attached :images
 - belongs_to :genre
 - has_many :reviews, dependent: :destroy
-
-
-## imagesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|image|string|null: false|
-|item_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :item
-
-## brandsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :items
+- belongs_to :seller
+- belongs_to :buyer, optional: true
 
 ## genresテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|parent_id|integer|null: false|
+|ancestry|string||
 ### Association
 - has_many :items
 
 ## creditcardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_brand|string|null: false|
-|last_four_number|integer|null: false|
-|expiration_month|integer|null: false|
-|expiration_year|integer|null: false|
+|user_id|string|null: false|
+|token_id|string|null: false|
 ### Association
 - belongs_to :user
 
@@ -87,17 +73,6 @@
 - belongs_to :user
 - belongs_to :item
 
-## destinationsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|postal_code|integer|null: false|
-|prefecture_id(active_hash)|integer|null: false|
-|city|string|null: false|
-|house_number|integer|null: false|
-|building_name|string||
-|user_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :user
 
 ## favoritesテーブル
 |Column|Type|Options|
@@ -142,3 +117,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+

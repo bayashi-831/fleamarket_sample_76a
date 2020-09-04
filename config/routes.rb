@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+devise_for :users
 root 'items#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+resources :items, only: [:index, :show,:new,:create] do
+    collection do
+      get 'genre_children', defaults: { format: 'json' }
+      get 'genre_grandchildren', defaults: { format: 'json' }
+    end
+    member do
+      get 'genre_children', defaults: { format: 'json' }
+      get 'genre_grandchildren', defaults: { format: 'json' }
+    end
+  end
+  resources :purchase, only: :index
+
 end
