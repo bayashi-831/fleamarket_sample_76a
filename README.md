@@ -40,19 +40,11 @@
 - belongs_to :user
 - has_many :comments, dependent: :destroy
 - has_many :favorites, dependent: :destroy
-- has_many :images, dependent: :destroy
+- has_many_attached :images
 - belongs_to :genre
 - has_many :reviews, dependent: :destroy
-
-
-## imagesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|image|string|null: false|
-|item_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :item
-
+- belongs_to :seller
+- belongs_to :buyer, optional: true
 
 ## genresテーブル
 |Column|Type|Options|
