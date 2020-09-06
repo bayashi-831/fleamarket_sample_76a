@@ -9,7 +9,7 @@
     .ProductBox__productLists
       .ProductBox__productLists__productList
         - @items.each do |item| 
-            =image_tag item.images[0].image.url, class: "ProductBox__productLists__productList__goodsshow__img__itemsphoto" 
+          =image_tag item.images[0].image.url, class: "ProductBox__productLists__productList__goodsshow__img__itemsphoto" 
           = link_to item_path(id: item.id)
         =link_to "#" ,class: "ProductBox__productLists__productList__goodsshow" do
           %figure.ProductBox__productLists__productList__goodsshow__img
