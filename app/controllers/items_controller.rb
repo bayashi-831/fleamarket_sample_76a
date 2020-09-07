@@ -21,6 +21,9 @@ class ItemsController < ApplicationController
     #子ジャンルに紐付く孫ジャンルの配列を取得
   end
 
+  def show
+  end
+
   def create
     @item = Item.new(item_params)
     if @item.save
