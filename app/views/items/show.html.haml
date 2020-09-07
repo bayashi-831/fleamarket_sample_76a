@@ -1,0 +1,67 @@
+-# 仮のビューです
+.sell
+  %header.sell-header
+    = link_to image_tag('logo.png'), root_path, alt: 'Furima', height: '55', class: 'header-logo'
+  %main
+    %section.sell-container
+      =@item.id
+    %section.sell-container
+      =@item.name
+    %section.sell-container
+      =@item.price
+    %section.sell-container
+      =@item.introduction
+    %section.sell-container
+      =@item.condition.condition
+    %section.sell-container
+      =@item.day.day
+    %section.sell-container
+      =@item.delivery_fee.payer
+    %section.sell-container
+      =@item.brand
+    %section.sell-container
+      =@item.pref.name
+    %section.sell-container
+      =@item.genre_id
+      %br
+      = link_to '#' do
+        =@item.genre.root.name
+        %br
+        =@item.genre.parent.name
+        %br
+        =@item.genre.name
+    %br
+    %section.sell-container
+      =@item.seller_id
+
+    -# 画像の表示
+    %section.sell-container
+      画像表示
+      -if @item.images.length > 4
+        .sell-container2__outbox
+          -@item.images.each do |image,count|
+            .sell-container2__outimage
+              =image_tag image
+      -else 
+        =@item.images.each do |image|
+          .sell-container2__outimage
+            =image_tag image
+
+  %footer.sell-footer
+    %nav
+      %ul.clearfix
+        %li
+          = link_to '#' do
+            プライバシーポリシー
+        %li
+          = link_to '#' do
+            利用規約
+        %li
+          = link_to '#' do
+            特定商取引に関する表記
+    = link_to root_path, class: 'footer__logo' do
+      = image_tag 'logo-white.png', alt: 'Furima', height: '45', class: 'footer__logo__image'
+    %p
+      %small
+        &copy; Furima, Inc.
+
