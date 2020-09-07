@@ -69,10 +69,10 @@
     font-size: 14px;
     display: flex;
     margin-bottom: 10px;
-    ul{
+    .listsLeft{
       position: relative;
       display: flex;
-      li{
+      &__item{
         text-decoration: none;
         padding: 0px;
         #Btn{
@@ -85,6 +85,20 @@
           padding-right: 30px;
         }
 
+        }
+      }
+    }
+
+    .listLeft__item__first__displayNone{
+      display: none;
+      &__categoryTree{
+        z-index: 2;
+        position: absolute;
+        background-color: #fff;
+        width: 240px;
+        top: 40px;
+        &__item{
+          position: relative;
         }
       }
     }

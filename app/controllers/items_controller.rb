@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
+    @genre_parent = Genre.where("ancestry is null")
     @images = Image.all
     @items = Item.all
   end

@@ -27,6 +27,11 @@
                   %i.far.fa-star
                     1
               %p (税込)
+          -if item.buyer_id.present?
+           .ProductBox__productLists__sold
+            .ProductBox__productLists__sold__inner
+              SOLD
+
 
 %section.pickupContainer
   %h2.head
@@ -54,3 +59,7 @@
                   %i.far.fa-star
                     1
               %p (税込)
+          -if item.buyer_id.present?
+           .ProductBox__productLists__sold
+            .ProductBox__productLists__sold__inner
+              SOLD
