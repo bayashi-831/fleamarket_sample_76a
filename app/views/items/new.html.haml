@@ -1,6 +1,6 @@
 .sell
   %header.sell-header
-    = image_tag 'logo.png', alt: 'Furima', height: '55', width: '185'
+    = link_to image_tag('logo.png'), root_path, alt: 'Furima', height: '55', class: 'header-logo'
   %main
     %section.sell-container
       = form_with model: @item, url: items_path do |f|
@@ -17,8 +17,8 @@
             .sell-container__content__upload__items
               .sell-container__content__upload__items__box
                 %ul#output-box
-                  %div#image-input{tabindex:"0"}
-                    = f.label :images, for: "item_images0", class: 'sell-container__content__upload__items__box__label', data: {label_id: 0 } do 
+                  %div#image-input
+                    = f.label :images, for: "item_images0", class: 'sell-container__content__upload__items__box__label', data: {label_id: 0 } do
                       = f.file_field :images, multiple: true, class: "sell-container__content__upload__items__box__input", id: "item_images0", style: 'display: none;'
                       %pre
                         %i.fas.fa-camera.fa-lg
@@ -40,7 +40,7 @@
               商品の説明
               %span.sell-title__require
                 必須
-          = f.text_area :text, {class: 'sell-container__content__description', required: "required", rows: '7', maxlength: '1000', placeholder: text_placeholder}
+          = f.text_area :introduction, {class: 'sell-container__content__description', required: "required", rows: '7', maxlength: '1000', placeholder: text_placeholder}
           -# placeholderでtems_helperを呼び出す
           .sell-container__content__word-count
             %span#word-count
@@ -172,7 +172,7 @@
           = link_to '#' do
             特定商取引に関する表記
     = link_to root_path, class: 'footer__logo' do
-      = image_tag 'logo-white.png', alt: 'Furima', height: '45', width: '151'
+      = image_tag 'logo-white.png', alt: 'Furima', height: '45', class: 'footer__logo__image'
     %p
       %small
         &copy; Furima, Inc.
