@@ -13,8 +13,8 @@
           = link_to item_path(id: item.id)
         =link_to "#" ,class: "ProductBox__productLists__productList__goodsshow" do
           %figure.ProductBox__productLists__productList__goodsshow__img
-            -ft_image = @item.image.first 
-            =image_tag ft_image.photo.url, class: "ProductBox__productLists__productList__goodsshow__img__itemsphoto" 
+            -ft_images = @items.image.first 
+            =image_tag ft_images.photo.url, class: "ProductBox__productLists__productList__goodsshow__img__itemsphoto" 
           .ProductBox__productLists__productList__body
             %h3.name
               =item.name
@@ -28,9 +28,9 @@
                     1
               %p (税込)
           -if item.buyer_id.present?
-           .ProductBox__productLists__sold
-            .ProductBox__productLists__sold__inner
-              SOLD
+            .ProductBox__productLists__sold
+              .ProductBox__productLists__sold__inner
+                SOLD
 
 
 %section.pickupContainer
@@ -45,7 +45,7 @@
       .ProductBox__productLists__productList
         =link_to "#" ,class: "ProductBox__productLists__productList__goodsshow" do
           %figure.ProductBox__productLists__productList__goodsshow__img
-            -ft_image = item.image.first 
+            -ft_image = @items.image.first 
             =image_tag ft_image.photo.url, class: "ProductBox__productLists__productList__goodsshow__img__itemsphoto" 
           .ProductBox__productLists__productList__body
             %h3.name
@@ -60,6 +60,6 @@
                     1
               %p (税込)
           -if item.buyer_id.present?
-           .ProductBox__productLists__sold
-            .ProductBox__productLists__sold__inner
-              SOLD
+            .ProductBox__productLists__sold
+              .ProductBox__productLists__sold__inner
+                SOLD
