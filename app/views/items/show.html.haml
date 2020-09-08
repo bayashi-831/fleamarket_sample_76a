@@ -11,25 +11,42 @@
       .topContent
         .itembox
           %h2.itembox__name
-            テスト
+            =@item.name
           .itembox__body
             %ul
               %li
-                = image_tag 'purchase/beef.jpeg'
-                %ul
-                  %li
-                    = image_tag 'purchase/beef.jpeg'
-          
+                = image_tag @item.images[0]
+                -if @item.images.length > 5
+                  %ul
+                    -for i in 0..4
+                      %li
+                        = image_tag @item.images[i]
+                  %ul
+                    -for i in 5..9
+                      %li
+                        = image_tag @item.images[i]
+                -else
+                  %ul
+                    -for i in 0..4
+                      %li
+                        = image_tag @item.images[i]
+                        - count = i + 1
+                          -if count > @item.images.length
+
+
           .itembox__price
             %span
-              ¥10000
+              ¥
+              =@item.price
           .itembox__price-detail
             %span
               （税込）
             %span
               送料込み
           .itemdetail
-            テストテストテストテストテストテスト
+            =@item.introduction
+          %button.commentBtn{:type => "submit",:name => "button"}
+            商品購入
           
           .table
             %table
@@ -38,21 +55,23 @@
                   %th
                     出品者
                   %td
-                    あああ
+                    =@item.seller.nickname
                 %tr
                   %th
                     カテゴリー
                   %td
                     %a
-                      = link_to "レディース", "#"  
-                    %a
-                      = link_to "トップス", "#" 
-                    %a
-                      = link_to "Tシャツ/カットソー（半袖/袖なし）", "#" 
+                      = link_to '#' do
+                        =@item.genre.root.name
+                        %br
+                        =@item.genre.parent.name
+                        %br
+                        =@item.genre.name
                 %tr
                   %th
                     ブランド
                   %td
+                    =@item.brand
                 %tr
                   %th
                     商品のサイズ
@@ -61,23 +80,24 @@
                   %th
                     商品の状態
                   %td
-                    新商品/未使用
+                    =@item.condition.condition
                 %tr
                   %th
                     配送料の負担
                   %td
-                    送料込み（出品者負担）
+                    =@item.delivery_fee.payer
                 %tr
                   %th
                     発送元の地域
                   %td
                     %a
-                      = link_to "北海道", "#"
+                      = link_to '#' do
+                        =@item.pref.name
                 %tr
                   %th
                     発送日の目安
                   %td
-                    １〜２日で発送
+                    =@item.day.day
           .option
             %ul
               %li.option__btn
