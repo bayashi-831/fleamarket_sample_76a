@@ -22,17 +22,16 @@
                       %li
                         = image_tag @item.images[i]
                   %ul
-                    -for i in 5..9
-                      %li
-                        = image_tag @item.images[i]
+                    -@item.images.each.with_index do |image,count|
+                      -if count < 5
+                      -else
+                        %li
+                          = image_tag image
                 -else
                   %ul
-                    -for i in 0..4
+                    -@item.images.each do |image|
                       %li
-                        = image_tag @item.images[i]
-                        - count = i + 1
-                          -if count > @item.images.length
-
+                        =image_tag image
 
           .itembox__price
             %span
@@ -43,10 +42,20 @@
               （税込）
             %span
               送料込み
+          -if user_signed_in? && current_user.id != @item.seller_id
+            .itembtnarea
+              %button.buyBtn{:type => "submit",:name => "button"}
+                商品購入
+          - else
+          -if user_signed_in? && current_user.id == @item.seller_id
+            .itembtnarea__seller
+              %button.editBtn{:type => "submit",:name => "button"}
+                編集
+              %button.deleteBtn{:type => "submit",:name => "button"}
+                削除
+          -else
           .itemdetail
             =@item.introduction
-          %button.commentBtn{:type => "submit",:name => "button"}
-            商品購入
           
           .table
             %table
@@ -72,10 +81,6 @@
                     ブランド
                   %td
                     =@item.brand
-                %tr
-                  %th
-                    商品のサイズ
-                  %td
                 %tr
                   %th
                     商品の状態
