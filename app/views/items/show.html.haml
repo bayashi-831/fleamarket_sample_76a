@@ -44,14 +44,14 @@
               送料込み
           -if user_signed_in? && current_user.id != @item.seller_id
             .itembtnarea
-              %button.buyBtn{:type => "submit",:name => "button"}
+              %button.buyBtn{type: "submit",name: "button"}
                 商品購入
           - else
           -if user_signed_in? && current_user.id == @item.seller_id
             .itembtnarea__seller
-              %button.editBtn{:type => "submit",:name => "button"}
+              %button.editBtn{type: "submit",name: "button"}
                 編集
-              %button.deleteBtn{:type => "submit",:name => "button"}
+              %button.deleteBtn{type: "submit",name: "button"}
                 削除
           -else
           .itemdetail
@@ -117,13 +117,13 @@
           
           .commentBox
             %ul.commentContets
-            %form.new_comment{:action => "#", :method => "post", :accept_charset => "UTF-8"}
-              %input{:type => "hidden", :value => "#" ,:name => "utf8"}
-              %input{:type => "hidden",:name => "authenticity_token",:value => "#"}
-              %textarea{:required => "required",:name => "comment[body]",:id => "comment_body"}  
+            %form.new_comment{action: "#", method: "post", accept_charset: "UTF-8"}
+              %input{type: "hidden", value: "#" ,name: "utf8"}
+              %input{type: "hidden",name: "authenticity_token",value: "#"}
+              %textarea{required: "required",name: "comment[body]",id: "comment_body"}  
               %p.comment
                 相手のことを考え丁寧なコメントを心がけましょう。<br>不快な言葉遣いなどは利用制限や退会処分となることがあります。
-              %button.commentBtn{:type => "submit",:name => "button"}
+              %button.commentBtn{type: "submit",name: "button"}
                 %i.fa.fa-comment
                   コメントする
 
