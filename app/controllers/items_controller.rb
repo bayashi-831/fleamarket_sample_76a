@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-    @parents = Genre.where("ancestry is null")
+    @genre_parents = Genre.where("ancestry is null")
     @items = Item.all
     #ホームページのピックアップに記載される情報は商品名・価格・画像のみ
   end

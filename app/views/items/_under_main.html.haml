@@ -6,32 +6,29 @@
       =link_to "#",class: "productBox__productHead__pickup" do
         %h3.productBox__productHead__pickup__title
           新規投稿
-    .ProductBox__productLists
-      .ProductBox__productLists__productList
+    .productBox__productLists
+      .productBox__productLists__productList
         - @items.each do |item| 
-          =image_tag item.images[0].image.url, class: "ProductBox__productLists__productList__goodsshow__img__itemsphoto" 
-          = link_to item_path(id: item.id)
-        =link_to "#" ,class: "ProductBox__productLists__productList__goodsshow" do
-          %figure.ProductBox__productLists__productList__goodsshow__img
-            -ft_images = @items.image.first 
-            =image_tag ft_images.photo.url, class: "ProductBox__productLists__productList__goodsshow__img__itemsphoto" 
-          .ProductBox__productLists__productList__body
-            %h3.name
-              =item.name
-            .details
-              %ul
-                %li.price
-                  =item.price
-                  ="円"
-                %li
-                  %i.far.fa-star
-                    1
-              %p (税込)
-          -if item.buyer_id.present?
-            .ProductBox__productLists__sold
-              .ProductBox__productLists__sold__inner
+          =link_to "#" ,class: "productBox__productLists__productList__goodsshow" do
+            %figure.productBox__productLists__productList__goodsshow__image
+            -ft_images = item.images
+            =image_tag item.images[0], class: "productBox__productLists__productList__goodsshow__itemsphoto"
+            .productBox__productLists__productList__goodsshow__itemsphoto__sold
+              .productBox__productLists__productList__goodsshow__itemsphoto__sold__inner
                 SOLD
-
+            .productBox__productLists__productList__body
+              %h3.name
+                =item.name
+              .details
+                %ul
+                  %li.price
+                    =item.price
+                    ="円"
+                  %li
+                    %i.far.fa-star
+                      1
+                %p.tax
+                  (税込)
 
 %section.pickupContainer
   %h2.head
@@ -41,25 +38,31 @@
       =link_to "#",class: "productBox__productHead__pickup" do
         %h3.productBox__productHead__pickup__title
           アーカイバ
-    .ProductBox__productLists
-      .ProductBox__productLists__productList
-        =link_to "#" ,class: "ProductBox__productLists__productList__goodsshow" do
-          %figure.ProductBox__productLists__productList__goodsshow__img
-            -ft_image = @items.image.first 
-            =image_tag ft_image.photo.url, class: "ProductBox__productLists__productList__goodsshow__img__itemsphoto" 
-          .ProductBox__productLists__productList__body
-            %h3.name
-              =item.name
-            .details
-              %ul
-                %li.price
-                  =item.price
-                  ="円"
-                %li
-                  %i.far.fa-star
-                    1
-              %p (税込)
-          -if item.buyer_id.present?
-            .ProductBox__productLists__sold
-              .ProductBox__productLists__sold__inner
-                SOLD
+    .productBox__productLists
+      .productBox__productLists__productList
+        - @items.each do |item| 
+          =link_to "#" ,class: "productBox__productLists__productList__goodsshow" do
+            %figure.productBox__productLists__productList__goodsshow__image
+            -ft_images = item.images
+            =image_tag item.images[0], class: "productBox__productLists__productList__goodsshow__itemsphoto"
+            -# -if @items.buyer_id.present?
+            -# .productBox__productLists__productList__goodsshow__itemsphoto__sold
+            -#   .productBox__productLists__productList__goodsshow__itemsphoto__sold__inner
+            -#     SOLD
+            -# この記述は、売り切れた商品を表示させるための機能です
+            -# 商品購入機能が実装され次第、呼び起こします
+            .productBox__productLists__productList__body
+              %h3.name
+                =item.name
+              .details
+                %ul
+                  %li.price
+                    =item.price
+                    ="円"
+                  %li
+                    %i.far.fa-star
+                      1
+                %p.tax
+                  (税込)
+
+

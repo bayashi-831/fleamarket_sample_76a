@@ -70,11 +70,11 @@
     display: flex;
     margin-bottom: 10px;
     .listsLeft{
-      position: relative;
-      display: flex;
-      &__item{
+     list-style: none; 
+     display: flex;
+      .listsLeft__item--first{
         text-decoration: none;
-        padding: 0px;
+        padding: 0;
         #Btn{
           color: $gray;
           text-decoration: none;
@@ -84,30 +84,54 @@
           background-size: 18px;
           padding-right: 30px;
         }
-
+      }
         }
       }
-    }
 
     .listLeft__item__first__displayNone{
       display: none;
       &__categoryTree{
-        z-index: 2;
-        position: absolute;
+        position: relative;
         background-color: #fff;
-        width: 240px;
-        top: 40px;
+        flex-direction: column;
+        display: flex;;
         &__item{
           position: relative;
         }
       }
     }
+
+    .listsLeft__item{
+      display: flex;
+      line-height: 38px;
+      padding: 0 0 0 16px;
+      #Btn{
+        color: $gray;
+        text-decoration: none;
+        line-height: 32px;
+        background-position: center right;
+        background-repeat: no-repeat;
+        background-size: 18px;          
+        padding-right: 30px;
+        }
+
+        }
    
     .listsRight{
       margin-left: auto;
       display: flex;
-      text-decoration: none;
-      padding: 0px;
+      &__item{
+        color: $gray;
+        line-height: 38px;
+        padding: 0 0 0 16px;
+        #Btn{
+          display: flex;
+          align-items: center;
+          color: $gray;
+          text-decoration: none;
+          line-height: 32px;
+        }
+      }
     }
 
     img{

@@ -17,9 +17,9 @@
       %li.listsLeft__item--first
         = link_to "カテゴリー", "#" ,id: "Btn" 
         .listLeft__item__first__displayNone
-          %ul.listLeft__item__first__displayNone__categoryTree
+          %ul.listLeft__item__displayNone__categoryTree
             %li.listLeft__item__first__displayNone__categoryTree__item
-              - @parents.each do |parent|
+              - @genre_parents.each do |parent|
                 = parent.name
                 - parent.children.each do |child|
                   = child.name
