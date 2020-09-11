@@ -33,12 +33,6 @@ ActiveRecord::Schema.define(version: 2020_08_31_065805) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "comment", null: false
     t.integer "user_id", null: false
@@ -68,23 +62,17 @@ ActiveRecord::Schema.define(version: 2020_08_31_065805) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", null: false
-    t.integer "item_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price", null: false
     t.text "introduction", null: false
-    t.string "condition", null: false
-    t.integer "day", null: false
-    t.string "delivery_fee", null: false
-    t.integer "brand_id", null: false
+    t.integer "condition_id", null: false
+    t.integer "day_id", null: false
+    t.integer "delivery_fee_id", null: false
+    t.string "brand"
+    t.integer "pref_id", null: false
     t.integer "genre_id", null: false
-    t.integer "buyer_id", null: false
+    t.integer "buyer_id"
     t.integer "seller_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

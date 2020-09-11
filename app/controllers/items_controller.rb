@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
 
   def index
+    @genre_parents = Genre.where("ancestry is null")
+    @items = Item.all
+    #ホームページのピックアップに記載される情報は商品名・価格・画像のみ
   end
 
   def new
@@ -21,9 +24,6 @@ class ItemsController < ApplicationController
     #子ジャンルに紐付く孫ジャンルの配列を取得
   end
 
-  def show
-  end
-
   def search
   end
 
@@ -34,6 +34,11 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+  end
+
+  # 商品詳細表示のアクション
+  def show
+    @item = Item.find(params[:id])
   end
 
   private

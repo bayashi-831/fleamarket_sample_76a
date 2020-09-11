@@ -2,178 +2,67 @@
   %h2.head
     ピックアップカテゴリー
   .productBox
-    .productHead
-      =link_to "#",class: "pickup" do
-        %h3.title
-          新規投稿商品
-    .productLists
-      .productList
-        =link_to "#" ,class: "goodsshow" do
-          %figure.productList__img
-            =image_tag "manga-niku.png", class: "itemsphoto"  
-          .productList__body
-            %h3.name
-              商品名
-            .details
-              %ul
-                %li
-                  1000円
-                %li
-                  %i.far.fa-star
-                    1
-              %p
-                (税込)
-      .productList
-        =link_to "#" ,class: "goodsshow" do
-          %figure.productList__img
-            =image_tag "manga-niku.png", class: "itemsphoto"  
-          .productList__body
-            %h3.name
-              商品名
-            .details
-              %ul
-                %li
-                  1000円
-                %li
-                  %i.far.fa-star
-                    1
-              %p
-                (税込)
-      .productList
-        =link_to "#" ,class: "goodsshow" do
-          %figure.productList__img
-            =image_tag "manga-niku.png", class: "itemsphoto"  
-          .productList__body
-            %h3.name
-              商品名
-            .details
-              %ul
-                %li
-                  1000円
-                %li
-                  %i.far.fa-star
-                    1
-              %p
-                (税込)
-      .productList
-        =link_to "#" ,class: "goodsshow" do
-          %figure.productList__img
-            =image_tag "manga-niku.png", class: "itemsphoto"  
-          .productList__body
-            %h3.name
-              商品名
-            .details
-              %ul
-                %li
-                  1000円
-                %li
-                  %i.far.fa-star
-                    1
-              %p
-                (税込)
-      .productList
-        =link_to "#" ,class: "goodsshow" do
-          %figure.productList__img
-            =image_tag "manga-niku.png", class: "itemsphoto"  
-          .productList__body
-            %h3.name
-              商品名
-            .details
-              %ul
-                %li
-                  1000円
-                %li
-                  %i.far.fa-star
-                    1
-              %p
-                (税込)
+    .productBox__productHead
+      =link_to "#",class: "productBox__productHead__pickup" do
+        %h3.productBox__productHead__pickup__title
+          新規投稿
+    .productBox__productLists
+      .productBox__productLists__productList
+        - @items.each do |item| 
+          =link_to "#" ,class: "productBox__productLists__productList__goodsshow" do
+            %figure.productBox__productLists__productList__goodsshow__image
+            -ft_images = item.images
+            =image_tag item.images[0], class: "productBox__productLists__productList__goodsshow__itemsphoto"
+            .productBox__productLists__productList__goodsshow__itemsphoto__sold
+              .productBox__productLists__productList__goodsshow__itemsphoto__sold__inner
+                SOLD
+            .productBox__productLists__productList__body
+              %h3.name
+                =item.name
+              .details
+                %ul
+                  %li.price
+                    =item.price
+                    ="円"
+                  %li
+                    %i.far.fa-star
+                      1
+                %p.tax
+                  (税込)
 
 %section.pickupContainer
   %h2.head
     ピックアップブランド
   .productBox
-    .productHead
-      =link_to "#",class: "pickup" do
-        %h3.title
+    .productBox__productHead
+      =link_to "#",class: "productBox__productHead__pickup" do
+        %h3.productBox__productHead__pickup__title
           アーカイバ
-    .productLists
-      .productList
-        =link_to "#" ,class: "goodsshow" do
-          %figure.productList__img
-            =image_tag "manga-niku.png", class: "itemsphoto"  
-          .productList__body
-            %h3.name
-              商品名
-            .details
-              %ul
-                %li
-                  1000円
-                %li
-                  %i.far.fa-star
-                    1
-              %p
-                (税込)
-      .productList
-        =link_to "#" ,class: "goodsshow" do
-          %figure.productList__img
-            =image_tag "manga-niku.png", class: "itemsphoto"  
-          .productList__body
-            %h3.name
-              商品名
-            .details
-              %ul
-                %li
-                  1000円
-                %li
-                  %i.far.fa-star
-                    1
-              %p
-                (税込)
-      .productList
-        =link_to "#" ,class: "goodsshow" do
-          %figure.productList__img
-            =image_tag "manga-niku.png", class: "itemsphoto"  
-          .productList__body
-            %h3.name
-              商品名
-            .details
-              %ul
-                %li
-                  1000円
-                %li
-                  %i.far.fa-star
-                    1
-              %p
-                (税込)
-      .productList
-        =link_to "#" ,class: "goodsshow" do
-          %figure.productList__img
-            =image_tag "manga-niku.png", class: "itemsphoto"  
-          .productList__body
-            %h3.name
-              商品名
-            .details
-              %ul
-                %li
-                  1000円
-                %li
-                  %i.far.fa-star
-                    1
-              %p
-                (税込)
-      .productList
-        =link_to "#" ,class: "goodsshow" do
-          %figure.productList__img
-            =image_tag "manga-niku.png", class: "itemsphoto"  
-          .productList__body
-            %h3.name
-              商品名
-            .details
-              %ul
-                %li
-                  1000円
-                %li
-                  %i.far.fa-star
-                    1
-              %p
-                (税込)
+    .productBox__productLists
+      .productBox__productLists__productList
+        - @items.each do |item| 
+          =link_to "#" ,class: "productBox__productLists__productList__goodsshow" do
+            %figure.productBox__productLists__productList__goodsshow__image
+            -ft_images = item.images
+            =image_tag item.images[0], class: "productBox__productLists__productList__goodsshow__itemsphoto"
+            -# -if @items.buyer_id.present?
+            -# .productBox__productLists__productList__goodsshow__itemsphoto__sold
+            -#   .productBox__productLists__productList__goodsshow__itemsphoto__sold__inner
+            -#     SOLD
+            -# この記述は、売り切れた商品を表示させるための機能です
+            -# 商品購入機能が実装され次第、呼び起こします
+            .productBox__productLists__productList__body
+              %h3.name
+                =item.name
+              .details
+                %ul
+                  %li.price
+                    =item.price
+                    ="円"
+                  %li
+                    %i.far.fa-star
+                      1
+                %p.tax
+                  (税込)
+
+
