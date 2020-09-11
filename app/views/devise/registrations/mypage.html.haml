@@ -1,21 +1,32 @@
+%header.pcHeader
+  =render 'items/header'
+
 .mypage
-  .mypage__user
-    .figure
-    %h2
-      = current_user.nickname
-    .mypage__user__number
-      評価
-      %span 12
-      出品数
-      %span 12
+  .mypage__content
+    .mypage__content__user
+      = link_to '#', class: "mypage__content__user__icon" do
+        .figure
+        %h2
+          = current_user.nickname
+        .mypage-user-number
+          評価
+          %span 12
+          出品数
+          %span 12
   .mypage__bottom
-    .mypage__bottom__nav
-      %ul.mypage__bottom__nav__list
-        %li
-          = link_to "プロフィール", class: "mypage__bottom__nav__list__item"
-        %li
-          = link_to "発送元・お届け先住所変更", class: "mypage__bottom__nav__list__item"
-        %li
-          = link_to "支払い方法", creditcard_path, class: "mypage__bottom__nav__list__item"
-        %li
-          = link_to "ログアウト", logout_page_path, class: "mypage__bottom__nav__list__item"
+    = render 'mypage__bottom'
+
+%aside.appBanner
+  .inner
+    %h2.inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text
+      今すぐ無料ダウンロード
+    .innner__icon        
+      =link_to "#", class: "aBtn" do
+        = image_tag 'icon/Download_on_the_App_Store_Badge_JP_blk_.png'
+      =link_to "#", class: "gBtn" do
+        = image_tag "icon/google-play-badge.png"
+
+%footer.home-footer
+  = render 'items/top-footer'

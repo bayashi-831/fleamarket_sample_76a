@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 devise_for :users
-devise_scope :user do
-  get 'my_page' => 'users/registrations#my_page'
-  get 'logout_page' => 'users/registrations#logout_page'
-end
 root 'items#index'
 devise_scope :user do
   get 'mypage' => 'users/registrations#mypage'
   get 'logout_page' => 'users/registrations#logout_page'
-  get 'creditcard' => 'users/registrations#creditcard'
+  get 'profile' => 'users/registrations#profile'
+  post 'profile' => 'users/registrations#update'
+  get 'destination' => 'users/registrations#destination'
+  post 'destination' => 'users/registrations#update'
+  get '/users/sign_out' => 'devise/sessions#destroy'
 end
 resources :items, only: [:index, :show,:new,:create] do
     collection do
@@ -23,4 +23,9 @@ resources :items, only: [:index, :show,:new,:create] do
 
   resources :purchase, only: :index
 
+  resources :creditcards, only:[:index, :new, :create,:destroy,:show] do
+    member do
+      post 'pay'
+    end
+  end
 end

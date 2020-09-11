@@ -3,7 +3,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-
+  def after_update_up_path_for(resource)
+    mypage_path(resource)
+  end
   # GET /resource/sign_up
   def new
     super
@@ -25,6 +27,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def creditcard
+  end
+
+  def profile
+  end
+
+  def update
+    current_user.update(user_params)
+  end
+
+  def destination
+    
   end
   # GET /resource/edit
   # def edit
@@ -73,6 +86,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 private
 def user_params
-  params.require(:user).permit(:nickname, :email, :password, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday, :destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number)
+  params.require(:user).permit(:nickname, :email, :password, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday, :destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :introduction)
+end
+
+def update_user_params
+  params.permit(:nickname, :email, :password, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday, :destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :introduction)
 end
 end

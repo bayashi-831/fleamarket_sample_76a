@@ -1,8 +1,26 @@
-.logoutpage
-  .l-content
-    .l-content__container
-      %form{:action => "destroy_user_session_path", :method => "POST"}
-        .l-single-content
-          %button{:type => "submit", :class => "btn-default btn-red"}
-            ログアウト
+%header.pcHeader
+  =render 'items/header'
 
+.mypage
+  .mypage__content
+    .mypage__content__logout
+      .mypage__content__logout__form
+        = link_to "ログアウト", users_sign_out_path, class: "mypage__content__logout__form__item"
+
+  .mypage__bottom
+    = render 'mypage__bottom'
+
+%aside.appBanner
+  .inner
+    %h2.inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text
+      今すぐ無料ダウンロード
+    .innner__icon        
+      =link_to "#", class: "aBtn" do
+        = image_tag 'icon/Download_on_the_App_Store_Badge_JP_blk_.png'
+      =link_to "#", class: "gBtn" do
+        = image_tag "icon/google-play-badge.png"
+        
+.home-footer
+  = render 'items/top-footer'
