@@ -16,6 +16,15 @@
     %ul.listsLeft
       %li.listsLeft__item--first
         = link_to "カテゴリー", "#" ,id: "Btn" 
+        .listLeft__item__first__displayNone
+          %ul.listLeft__item__displayNone__categoryTree
+            %li.listLeft__item__first__displayNone__categoryTree__item
+              - @genre_parents.each do |parent|
+                = parent.name
+                - parent.children.each do |child|
+                  = child.name
+                  - child.children.each do |grandchild|
+                    = grandchild.name
       %li.listsLeft__item
         = link_to "ブランド", "#" ,id: "Btn" 
         %ul.brandsPulldown-displayNone
@@ -25,7 +34,7 @@
           = link_to "マイページ", "#" , id: "Btn"
         %li.listsRight__item
           = link_to "ログアウト", destroy_user_session_path, method: :delete, id: "Btn"
-      - else
+      -else
         %li.listsRight__item
           = link_to "ログイン", new_user_session_path,  id: "Btn" 
         %li.listsRight__item
