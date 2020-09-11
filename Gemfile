@@ -86,4 +86,4 @@ end
 gem 'haml-rails'
 gem "font-awesome-sass"
 gem 'jquery-rails'
-gem 'aws-sdk-s3'
+gem 'aws-sdk-s3', require: false
