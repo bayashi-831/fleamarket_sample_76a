@@ -46,7 +46,6 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'capistrano-rails-console'
-  gem 'ancestry'
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'factory_bot_rails'
 end
@@ -60,6 +59,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+gem 'ancestry'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
@@ -84,6 +84,7 @@ group :production do
 end
 
 gem 'haml-rails'
-gem 'font-awesome-sass'
+gem "font-awesome-sass"
 gem 'jquery-rails'
 gem 'payjp'
+gem 'aws-sdk-s3', require: false
