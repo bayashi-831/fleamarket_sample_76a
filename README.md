@@ -8,6 +8,10 @@
 |nickname|string|null: false|
 |password|string|null: false|
 |icon|string|null: false|
+|prefecture|string|null: false|
+|city|string|null: false|
+|address1|string|null: false|
+|address2|string||
 |email|string|null: false|
 |family_name|string|null: false|
 |first_name|string|null: false|
@@ -59,6 +63,10 @@
 |------|----|-------|
 |user_id|string|null: false|
 |token_id|string|null: false|
+|user_id|string|null: false|
+|card_id|string|null: false|
+|customer_id|string|null: false|
+
 ### Association
 - belongs_to :user
 

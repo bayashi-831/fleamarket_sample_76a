@@ -5,6 +5,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
       t.string :nickname, null: false
       t.string :icon
+      t.string :prefecture, null: false
+      t.string :city. null: false
+      t.string :address1, null: false
+      t.string :address2
       t.string :family_name, null: false
       t.string :first_name, null: false
       t.string :family_name_kana, null: false

@@ -34,8 +34,7 @@
           background-color: $white;
           display: inline-block;
           &__image{
-            width: 220px;
-            height: 20px;
+            width: 100%;
 
           }
             .productBox__productLists__productList__goodsshow__itemsphoto{
@@ -43,7 +42,7 @@
               left: 0;
               right: 0;
               bottom: 0;
-              width: 100%;
+              width: 220px;
               z-index: auto;
               height: 150px;                
               object-fit: cover;
