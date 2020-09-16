@@ -10,8 +10,8 @@
 |icon|string|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
-|address1|string|null: false|
-|address2|string||
+|street_block|string|null: false|
+|mansion_name|string||
 |email|string|null: false|
 |family_name|string|null: false|
 |first_name|string|null: false|
