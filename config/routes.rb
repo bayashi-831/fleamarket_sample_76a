@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 devise_for :users
 root 'items#index'
-resources :items, only: [:index, :show,:new,:create,:edit,:update] do
+resources :items, only: [:index, :show, :new, :create, :edit, :update] do
     collection do
       get 'genre_children', defaults: { format: 'json' }
       get 'genre_grandchildren', defaults: { format: 'json' }

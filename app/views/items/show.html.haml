@@ -50,7 +50,8 @@
           -if user_signed_in? && current_user.id == @item.seller_id
             .itembtnarea__seller
               %button.editBtn{type: "submit",name: "button"}
-                編集
+                = link_to edit_item_path(@item) do
+                  編集
               %button.deleteBtn{type: "submit",name: "button"}
                 削除
           -else

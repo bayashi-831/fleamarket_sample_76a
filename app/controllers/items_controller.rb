@@ -39,13 +39,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find_by(id: params[:id])
+    @item = Item.find(params[:id])
+    @genre_parent =  Genre.where("ancestry is null")
   end
 
   def update
-    @item = Item.find_by(id: params[:id])
-    @item.update(title: params[:title])
-    redirect_to("/")
   end
 
   private
