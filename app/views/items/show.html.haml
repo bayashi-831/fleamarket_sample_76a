@@ -51,8 +51,9 @@
             .itembtnarea__seller
               %button.editBtn{type: "submit",name: "button"}
                 編集
-              %button.deleteBtn{type: "submit",name: "button"}
-                削除
+              %button.deleteBtn
+                = link_to '削除',item_path, method: :delete, data: { confirm: '削除してよろしいですか?' }
+
           -else
           .itemdetail
             =@item.introduction
