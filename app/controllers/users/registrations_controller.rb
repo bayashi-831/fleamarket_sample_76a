@@ -2,10 +2,8 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
-  def after_update_up_path_for(resource)
-    mypage_path(resource)
-  end
+  before_action :configure_account_update_params, only: [:update]
+  
   # GET /resource/sign_up
   def new
     super
@@ -33,6 +31,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update
+    
     current_user.update(user_params)
   end
 
@@ -63,7 +62,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+    def update_resource(resource, user_params)
+      resource.update_without_current_password(user_params)
+    end
+
+    def after_update_up_path_for(resource)
+      mypage_path(resource)
+    end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -71,9 +77,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+    def configure_account_update_params
+      devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :introduction, :destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number])
+    end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

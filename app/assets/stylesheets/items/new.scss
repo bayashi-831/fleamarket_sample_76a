@@ -118,6 +118,9 @@ img {
     align-items: center;
     display: flex;
     justify-content: center;
+    .header-logo{
+      width: 185px;
+    }
   }
   .sell-container{
     box-sizing: border-box;
@@ -368,5 +371,8 @@ img {
         }
       }
     }
+  }
+  .footer__logo__image{
+    width: 151px;
   }
 }

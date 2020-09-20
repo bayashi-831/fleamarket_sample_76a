@@ -7,7 +7,7 @@ document.addEventListener(
       btn.addEventListener("click", e => {  // 送信ボタンがクリックされたとき
         e.preventDefault(); // デフォルトのブラウザの動きをいったんとめる(createアクションへの遷移を)
         let card = {  // cardに入力された値をハッシュで格納
-          number: document.getElementById("card_number").value,
+          card_number: document.getElementById("card_number").value,
           cvc: document.getElementById("cvc").value,
           exp_month: document.getElementById("exp_month").value,
           exp_year: document.getElementById("exp_year").value

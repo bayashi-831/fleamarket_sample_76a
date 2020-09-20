@@ -10,12 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_23_121211) do
+ActiveRecord::Schema.define(version: 2020_08_31_065805) do
 
-  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -27,8 +42,9 @@ ActiveRecord::Schema.define(version: 2020_08_23_121211) do
   end
 
   create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "user_id", null: false
-    t.string "token_id", null: false
+    t.string "user_id"
+    t.string "customer_id"
+    t.string "card_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,23 +63,25 @@ ActiveRecord::Schema.define(version: 2020_08_23_121211) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", null: false
-    t.integer "item_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price", null: false
     t.text "introduction", null: false
+<<<<<<< HEAD
     t.string "condition", null: false
-    t.integer "day", null: false
+    t.string "day", null: false
     t.string "delivery_fee", null: false
-    t.integer "brand_id", null: false
+    t.string "brand"
+    t.string "pref", null: false
+=======
+    t.integer "condition_id", null: false
+    t.integer "day_id", null: false
+    t.integer "delivery_fee_id", null: false
+    t.string "brand"
+    t.integer "pref_id", null: false
+>>>>>>> f937cb77951061c653c757e572b3225743fb98b9
     t.integer "genre_id", null: false
-    t.integer "buyer_id", null: false
+    t.integer "buyer_id"
     t.integer "seller_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -115,4 +133,5 @@ ActiveRecord::Schema.define(version: 2020_08_23_121211) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
 end

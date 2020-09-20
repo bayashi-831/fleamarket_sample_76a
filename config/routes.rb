@@ -20,8 +20,7 @@ resources :items, only: [:index, :show,:new,:create] do
       get 'genre_grandchildren', defaults: { format: 'json' }
     end
   end
-
-  resources :purchase, only: :index
+  resources :purchase, only: [:index,:new]
 
   resources :creditcards, only:[:index, :new, :create,:destroy,:show] do
     member do

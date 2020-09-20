@@ -6,7 +6,7 @@
     .mypage__content__profile
       %h2 プロフィール
     .mypage__content__profile__info
-      = form_with model: @user, html: {class: "Form"}, local: true do |f|
+      = form_with model: @user, method: "PATCH", html: {class: "Form"}, local: true do |f|
         .field
           .field-label
             = f.label 'ニックネーム'
