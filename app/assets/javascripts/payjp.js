@@ -7,11 +7,12 @@ document.addEventListener(
       btn.addEventListener("click", e => {  // 送信ボタンがクリックされたとき
         e.preventDefault(); // デフォルトのブラウザの動きをいったんとめる(createアクションへの遷移を)
         let card = {  // cardに入力された値をハッシュで格納
-          card_number: document.getElementById("card_number").value,
+          number: document.getElementById("card_number").value,
           cvc: document.getElementById("cvc").value,
           exp_month: document.getElementById("exp_month").value,
           exp_year: document.getElementById("exp_year").value
         }; 
+        console.log(card)
         Payjp.createToken(card, (status, response) => {
           // カード情報をpayjpに送りカードトークンを(response.id)を受け取る。
           if (status === 200) {  // 正常な値の場合 
@@ -20,7 +21,7 @@ document.addEventListener(
             $("#exp_month").removeAttr("name");
             $("#exp_year").removeAttr("name"); 
             // name属性を削除することにより、dataベースに送るのを防ぐ。
-            $("#card_token").append(
+            $(".leftbox").append(
               $('<input type="hidden" name="payjp-token">').val(response.id)
               // <input type="hidden" name="payjp-token" value= response.id>が#card_tokenに追加される。
             ); 

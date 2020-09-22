@@ -13,7 +13,7 @@ class CreditcardsController < ApplicationController
       card: params['payjp-token']
       # params['payjp-token']（response.id）からcustomerを作成
       ) 
-      @card = Card.new(user_id: user_id, customer_id: customer.id, card_id: customer.default_card)
+      @card = Creditcard.new(user_id: user_id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
         flash[:notice] = '登録しました'
         redirect_to "/"
