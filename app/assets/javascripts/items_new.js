@@ -24,7 +24,7 @@ $(document).on('turbolinks:load', function(){
           // プレビュー表示
           $('#image-input').before(`<li class="preview-image" id="upload-image${labelLength}" data-image-id="${labelLength}">
                                       <figure class="preview-image__figure">
-                                        <img src='${e.target.result}' title='${file.name}' >
+                                        <img src='${e.target.result}' alt='${file.name}' >
                                       </figure>
                                       <div class="preview-image__button">
                                         <a class="preview-image__button__edit">編集</a>

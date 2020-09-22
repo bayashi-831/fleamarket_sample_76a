@@ -29,6 +29,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
+      flash.now[:alert] = '出品できませんでした'
       render :new
     end
   end
@@ -44,6 +45,12 @@ class ItemsController < ApplicationController
   end
 
   def update
+    if @item.update(item_params)
+      redirect_to items_
+    else
+      flash.now[:alert] = '更新できませんでした'
+      render :edit
+    end
   end
 
   private
