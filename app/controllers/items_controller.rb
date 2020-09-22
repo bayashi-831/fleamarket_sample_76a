@@ -38,6 +38,11 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  # 商品検索のアクション
+  def search
+    @items = Item.search(params[:key])
+  end
+
   private
 
   def item_params
