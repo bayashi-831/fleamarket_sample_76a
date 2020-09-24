@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_itme, only: [:show, :destroy]
 
   def index
     @genre_parents = Genre.where("ancestry is null")
@@ -35,14 +36,15 @@ class ItemsController < ApplicationController
 
   # 商品詳細表示のアクション
   def show
-    @item = Item.find(params[:id])
   end
 
   # 商品削除のアクション
   def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
-    redirect_to root_path
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   private
@@ -50,4 +52,9 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :introduction, :genre_id, :brand, :condition_id, :delivery_fee_id, :pref_id, :day_id, :price, images: []).merge(seller_id: current_user.id)
   end
+
+  def set_itme
+    @item = Item.find(params[:id]) 
+  end
+
 end
