@@ -22,7 +22,8 @@ $(document).on('turbolinks:load', function(){
           // #image-inputの子要素labelの中から最後の要素のカスタムデータidを取得
 
           // プレビュー表示
-          $('#image-input').before(`<li class="preview-image" id="upload-image${labelLength}" data-image-id="${labelLength}">
+          $('#image-input').before(`<h1 id="check${labelLength}"></h1>
+                                    <li class="preview-image" id="upload-image${labelLength}" data-image-id="${labelLength}">
                                       <figure class="preview-image__figure">
                                         <img src='${e.target.result}' alt='${file.name}' >
                                       </figure>
@@ -57,7 +58,7 @@ $(document).on('turbolinks:load', function(){
     //プレビューを削除
     $(`[for=item_images${targetImageId}]`).remove();
     //削除したプレビューに関連したinputを削除
-
+    $(`#check${targetImageId}`).remove();
     let imageLength = $('#output-box').children('li').length;
     // 表示されているプレビューの数を数える
     if (imageLength ==9) {

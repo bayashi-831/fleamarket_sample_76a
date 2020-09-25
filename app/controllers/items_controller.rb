@@ -45,8 +45,13 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @item = Item.find(params[:id])
+    params[:item][:image_ids].each do |image_id|
+      image = @item.images.find(image_id)
+      image.purge
+    end
     if @item.update(item_params)
-      redirect_to items_
+      redirect_to item_path(@item)
     else
       flash.now[:alert] = '更新できませんでした'
       render :edit
