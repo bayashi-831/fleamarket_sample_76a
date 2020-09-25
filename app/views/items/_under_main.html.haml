@@ -9,7 +9,7 @@
     .productBox__productLists
       .productBox__productLists__productList
         - @items.each do |item| 
-          =link_to "#" ,class: "productBox__productLists__productList__goodsshow" do
+          =link_to "items/show" ,class: "productBox__productLists__productList__goodsshow" do
             %figure.productBox__productLists__productList__goodsshow__image
             -ft_images = item.images
             =image_tag item.images[0], class: "productBox__productLists__productList__goodsshow__itemsphoto"
@@ -35,7 +35,7 @@
     ピックアップブランド
   .productBox
     .productBox__productHead
-      =link_to "#",class: "productBox__productHead__pickup" do
+      =link_to "items/show",class: "productBox__productHead__pickup" do
         %h3.productBox__productHead__pickup__title
           アーカイバ
     .productBox__productLists

@@ -36,7 +36,7 @@
     .serchBox{
       margin-left: auto;
       width: 100%;
-      form{
+      &__input{
         width: 100%;
         display: flex;
         margin-bottom: 5px;

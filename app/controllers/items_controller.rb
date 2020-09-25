@@ -40,7 +40,17 @@ class ItemsController < ApplicationController
 
   # 商品検索のアクション
   def search
-    @items = Item.search(params[:key])
+    @items = .where('name LIKE(?)', "%#{params[:key]}%").order("id DESC").page(params[:page]).per(15)
+    if params[:key] == ""
+      redirect_to '/items/search?utf8=✓&keyword=+++'
+    else
+      puts "キーワードを入力してください"
+      @all_items = Item.limit(25).order("id DESC")
+    end
+
+    if @items.count == 0
+      @all_items = Item.limit(25).order("id DESC")
+    end
   end
 
   private
