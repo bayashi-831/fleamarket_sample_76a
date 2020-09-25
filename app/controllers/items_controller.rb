@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
 
   # 商品検索のアクション
   def search
-    @items = .where('name LIKE(?)', "%#{params[:key]}%").order("id DESC").page(params[:page]).per(15)
+    @items = Item.search(params[:key])
     if params[:key] == ""
       redirect_to '/items/search?utf8=✓&keyword=+++'
     else
