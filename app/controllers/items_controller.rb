@@ -47,6 +47,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  # 商品検索のアクション
+  def search
+    @items = Item.search(params[:key])
+    if params[:key] == ""
+      redirect_to '/items/search?utf8=✓&keyword=+++'
+    end
+
+    if @items.count == 0
+      @all_items = Item.limit(25).order("id DESC")
+    end
+  end
+
   private
 
   def item_params
