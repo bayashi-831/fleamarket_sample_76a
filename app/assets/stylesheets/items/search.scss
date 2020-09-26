@@ -73,7 +73,6 @@
       position: relative;
       height: 58px;
       padding: 8px 12px;
-      display: flexbox;
       .found-name{
         font-size: 14px;
         overflow: hidden;
@@ -84,11 +83,6 @@
         word-break: break-word;
         white-space: normal;
       }
-    }
-
-    .found-details{
-      display: flexbox;
-    
     }
 
 

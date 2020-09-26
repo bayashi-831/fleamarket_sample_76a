@@ -52,9 +52,6 @@ class ItemsController < ApplicationController
     @items = Item.search(params[:key])
     if params[:key] == ""
       redirect_to '/items/search?utf8=✓&keyword=+++'
-    else
-      puts "キーワードを入力してください"
-      @all_items = Item.limit(25).order("id DESC")
     end
 
     if @items.count == 0
