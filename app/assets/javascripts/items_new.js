@@ -1,7 +1,10 @@
 $(document).on('turbolinks:load', function(){
   
   $('#image-input').on('change', function(e){
-
+    if($("#error-image")){
+      let errorImage = $("#error-image")
+      errorImage.text("");
+    }
     //ファイルオブジェクトを取得する
     let files = e.target.files;
     $.each(files, function(index, file) {
@@ -15,7 +18,7 @@ $(document).on('turbolinks:load', function(){
       //アップロードした画像を設定する
       reader.onload = (function(file){
         return function(e){
-          let imageLength = $('#output-box').children('li').length;
+          let imageLength = $('#output-box').children('h1').length;
           // 表示されているプレビューの数を数える
 
           let labelLength = $("#image-input>label").eq(-1).data('label-id');
@@ -59,7 +62,7 @@ $(document).on('turbolinks:load', function(){
     $(`[for=item_images${targetImageId}]`).remove();
     //削除したプレビューに関連したinputを削除
     $(`#check${targetImageId}`).remove();
-    let imageLength = $('#output-box').children('li').length;
+    let imageLength = $('#output-box').children('h1').length;
     // 表示されているプレビューの数を数える
     if (imageLength ==9) {
       let labelLength = $("#image-input>label").eq(-1).data('label-id');
@@ -189,7 +192,7 @@ $(document).on('turbolinks:load', function(){
       $('#error-image').text('');
       $('#image-input').on('blur',function(){
         $('#error-image').text('');
-        let imageLength = $('#output-box').children('li').length;
+        let imageLength = $('#output-box').children('h1').length;
         if(imageLength ==''){
           $('#error-image').text('画像がありません');
         }else if(imageLength >10){
@@ -201,14 +204,17 @@ $(document).on('turbolinks:load', function(){
     });
 
     //送信しようとした時
-    $('form').on('submit',function(){
-      let imageLength = $('#output-box').children('li').length;
+    $('form').on('submit',function(e){
+      e.preventDefault();
+      let imageLength = $('#output-box').children('h1').length;
       if(imageLength ==''){
         $('body, html').animate({ scrollTop: 0 }, 500);
         $('#error-image').text('画像がありません');
+        return false;
       }else if(imageLength >10){
         $('body, html').animate({ scrollTop: 0 }, 500);
         $('#error-image').text('画像を10枚以下にして下さい');
+        return false;
       }else{
         return true;
       }
@@ -216,7 +222,7 @@ $(document).on('turbolinks:load', function(){
 
      //画像を削除した時
     $(document).on('click','.preview-image__button__delete',function(){
-      let imageLength = $('#output-box').children('li').length;
+      let imageLength = $('#output-box').children('h1').length;
       if(imageLength ==''){
         $('#error-image').text('画像がありません');
       }else if(imageLength >10){

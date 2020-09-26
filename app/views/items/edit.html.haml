@@ -25,19 +25,19 @@
                         = image_tag image, alt: ""
                         .preview-image__button
                           %a.preview-image__button__edit 編集
-                          = f.check_box :image_ids, {class: 'checkbox', id: "checkbox#{labelLength}", :multiple => true}, image.id, false
+                          = f.check_box :image_ids, {class: 'checkbox', id: "checkbox#{labelLength}", :multiple => true,value: "#{labelLength-1}"}, image.id, false
                           %label.checkbox__label{for: "checkbox#{labelLength}","data-image-id": "#{labelLength}"}削除
-                    - labelLength = labelLength +1
+                        - labelLength = labelLength +1
                   -if labelLength < 10
                     %div#image-input
                       = f.label :images, for: "item_images#{labelLength}", class: 'sell-container__content__upload__items__box__label', data: {label_id: labelLength } do
-                        = f.file_field :images, multiple: true, class: "sell-container__content__upload__items__box__input", id: "item_images#{labelLength}", style: 'display: none;'
+                        = f.file_field :images, multiple: true, class: "sell-container__content__upload__items__box__input", id: "item_images#{labelLength}",style: 'display: none;'
                         %pre
                           %i.fas.fa-camera.fa-lg
                   -elsif labelLength < 11
                     %div#image-input
-                      = f.label :images, for: "item_images#{labelLength}", class: 'sell-container__content__upload__items__box__label',style: 'display: none;', data: {label_id: 9 } do
-                        = f.file_field :images, multiple: true, class: "sell-container__content__upload__items__box__input", id: "item_images#{labelLength}",style: 'display: none;'
+                      = f.label :images, for: "item_images#{labelLength}", class: 'sell-container__content__upload__items__box__label',style: 'display: none;', data: {label_id: labelLength } do
+                        = f.file_field :images, multiple: true, class: "sell-container__content__upload__items__box__input", id: "item_images#{labelLength}", style: 'display: none;'
                         %pre
                           %i.fas.fa-camera.fa-lg
                   -else
