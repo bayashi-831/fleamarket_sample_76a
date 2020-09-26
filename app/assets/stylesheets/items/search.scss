@@ -10,7 +10,7 @@
   height: 100%;
   .l-content{
     float: right;
-    width: 800px;
+    width: 700px;
   }
 }
 
@@ -39,8 +39,6 @@
       margin: 0 auto;
       width: auto;
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
       padding-bottom: 20px;
       .itemsbox{
         width: 160px;

@@ -17,5 +17,5 @@ resources :items, only: [:index, :show,:new,:create,:destroy] do
     end
   end
   resources :purchase, only: [:index,:new]
-end
+
 end
