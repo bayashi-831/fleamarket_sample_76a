@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :edit, :update]
 
   def index
     @genre_parents = Genre.where("ancestry is null")
@@ -36,16 +37,14 @@ class ItemsController < ApplicationController
 
   # 商品詳細表示のアクション
   def show
-    @item = Item.find(params[:id])
   end
 
+  # 商品編集のアクション
   def edit
-    @item = Item.find(params[:id])
     @genre_parent =  Genre.where("ancestry is null")
   end
 
   def update
-    @item = Item.find(params[:id])
     if  params[:item][:image_ids].present?
       params[:item][:image_ids].each do |image_id|
         image = @item.images.find(image_id)
@@ -64,5 +63,9 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :introduction, :genre_id, :brand, :condition_id, :delivery_fee_id, :pref_id, :day_id, :price, images: []).merge(seller_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end

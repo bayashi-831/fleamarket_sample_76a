@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function(){
   //削除ボタンが押された時
-  $(document).on('click', '.checkbox__label', function(){
+  $('#output-box').on('click', '.checkbox__label', function(){
     let targetImageId = $(this).data('image-id');
     // イベント元のカスタムデータ属性の値を取得
     
