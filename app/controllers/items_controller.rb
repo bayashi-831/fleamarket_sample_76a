@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update]
+
+  before_action :set_itme, only: [:show, :destroy, :edit, :update]
+
 
   def index
     @genre_parents = Genre.where("ancestry is null")
@@ -56,6 +58,25 @@ class ItemsController < ApplicationController
     else
       flash.now[:alert] = '更新できませんでした'
       render :edit
+      
+  # 商品削除のアクション
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
+
+  # 商品検索のアクション
+  def search
+    @items = Item.search(params[:key])
+    if params[:key] == ""
+      redirect_to '/items/search?utf8=✓&keyword=+++'
+    end
+
+    if @items.count == 0
+      @all_items = Item.limit(25).order("id DESC")
     end
   end
 
@@ -65,7 +86,8 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :introduction, :genre_id, :brand, :condition_id, :delivery_fee_id, :pref_id, :day_id, :price, images: []).merge(seller_id: current_user.id)
   end
 
-  def set_item
-    @item = Item.find(params[:id])
+  def set_itme
+    @item = Item.find(params[:id]) 
   end
+
 end
