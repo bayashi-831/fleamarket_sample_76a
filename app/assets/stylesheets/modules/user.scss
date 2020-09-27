@@ -20,6 +20,8 @@
 
   &__inner {
     width: 680px;
+    min-height: 1800px;
+    height: auto !important;
     height: 1800px;
     margin: 10px auto;
     padding: 60px;
@@ -140,7 +142,6 @@
 
   input[type='submit'] {
     float: left;
-    margin-top: 20px;
     color: #fff;
     background-color: #38aef0;
   }

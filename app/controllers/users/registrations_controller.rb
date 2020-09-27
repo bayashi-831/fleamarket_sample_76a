@@ -6,16 +6,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    super
+    @user = User.new
+    @user.build_destination
   end
 
+ 
   # POST /resource
   def create
     @user = User.new(user_params)
     unless @user.valid?
-      flash.now[:alert] = @user.errors.full_messages
       render :new and return
     end
+    @user.save
+    sign_in @user
+    redirect_to root_path
   end
 
   # GET /resource/edit
@@ -43,10 +47,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  #   devise_parameter_sanitizer.permit(:sign_up,
+  #     keys: [:birthday, :phone_number, :family_name, :first_name, :family_name_kana, :first_name_kana,  
+  #       destination_attributes: [:destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :street_block, :mansion_name, :nickname]])
   # end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -61,10 +65,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
+  #  :new_item(resource)
   # end
-private
-def user_params
-  params.require(:user).permit(:nickname, :email, :password, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday, :destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number)
-end
+
+  private
+  def user_params
+    #params.require(:user).permit(:nickname, :email, :password, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday, :destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :street_block, :mansion_name)
+    params.require(:user).permit(:email, :password, :password_confirmation, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday, :phone_number,
+            destination_attributes: [:destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :street_block, :mansion_name, :nickname])
+  end
+
 end
