@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_one :destination, inverse_of: :user
+  has_one :destination, inverse_of: :user, dependent: :destroy
   accepts_nested_attributes_for :destination
   
 
