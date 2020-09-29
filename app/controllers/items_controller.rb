@@ -39,6 +39,7 @@ class ItemsController < ApplicationController
 
   # 商品詳細表示のアクション
   def show
+    @destination = Destination.find_by(user_id: @item.seller_id)
   end
 
   # 商品編集のアクション
@@ -87,7 +88,7 @@ class ItemsController < ApplicationController
   end
 
   def set_itme
-    @item = Item.find(params[:id]) 
+    @item = Item.find(params[:id])
   end
 
 end
