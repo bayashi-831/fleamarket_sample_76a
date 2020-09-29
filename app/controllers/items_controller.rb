@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_itme, only: [:show, :destroy]
+
+  before_action :set_itme, only: [:show, :destroy, :edit, :update]
+
 
   def index
     @genre_parents = Genre.where("ancestry is null")
@@ -30,6 +32,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
+      flash.now[:alert] = '出品できませんでした'
       render :new
     end
   end
@@ -38,6 +41,24 @@ class ItemsController < ApplicationController
   def show
   end
 
+  # 商品編集のアクション
+  def edit
+    @genre_parent =  Genre.where("ancestry is null")
+  end
+
+  def update
+    if  params[:item][:image_ids].present?
+      params[:item][:image_ids].each do |image_id|
+        image = @item.images.find(image_id)
+        image.purge
+      end
+    end
+    if @item.update(item_params)
+      redirect_to item_path(@item)
+    else
+      flash.now[:alert] = '更新できませんでした'
+      render :edit
+      
   # 商品削除のアクション
   def destroy
     if @item.destroy

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 devise_for :users
 root 'items#index'
+
 namespace :items do
   resources :searches, only: :index
 end
-resources :items, only: [:index, :show,:new,:create] do
-resources :items, only: [:index, :show,:new,:create,:destroy] do
+resources :items, only: [:index, :show,:new,:create,:destroy, :edit, :update] do
     collection do
       get 'genre_children', defaults: { format: 'json' }
       get 'genre_grandchildren', defaults: { format: 'json' }
@@ -17,5 +17,4 @@ resources :items, only: [:index, :show,:new,:create,:destroy] do
     end
   end
   resources :purchase, only: [:index,:new]
-end
 end
