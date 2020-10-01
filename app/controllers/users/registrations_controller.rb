@@ -24,6 +24,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def logout_page
   end
 
+  def payment_method
+  end
+
   def creditcard
   end
 
