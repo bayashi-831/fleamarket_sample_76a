@@ -50,9 +50,10 @@
           -if user_signed_in? && current_user.id == @item.seller_id
             .itembtnarea__seller
               %button.editBtn{type: "submit",name: "button"}
-                編集
-              %button.deleteBtn{type: "submit",name: "button"}
-                削除
+                = link_to edit_item_path(@item) do
+                  編集
+              %button.deleteBtn
+                = link_to '削除',item_path, method: :delete, data: { confirm: '削除してよろしいですか?' }
           -else
           .itemdetail
             =@item.introduction
@@ -64,7 +65,7 @@
                   %th
                     出品者
                   %td
-                    =@item.seller.nickname
+                    =@destination.nickname
                 %tr
                   %th
                     カテゴリー
@@ -157,9 +158,3 @@
 
 .home-footer
   = render 'items/top-footer'
-  
-=link_to "items/new" do
-  .purchaseBtn
-    %span.purchaseBtn__text
-      出品する
-    =image_tag 'icon/icon_camera.png' 

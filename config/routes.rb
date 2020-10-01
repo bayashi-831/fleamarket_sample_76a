@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-devise_for :users
+devise_for :users, controllers: {
+  registrations: 'users/registrations'
+}
+
 root 'items#index'
 devise_scope :user do
   get 'mypage' => 'users/registrations#mypage'
@@ -10,16 +13,23 @@ devise_scope :user do
   post 'destination' => 'users/registrations#update'
   get '/users/sign_out' => 'devise/sessions#destroy'
 end
-resources :items, only: [:index, :show,:new,:create] do
+
+namespace :items do
+  resources :searches, only: :index
+end
+resources :items, only: [:index, :show,:new,:create,:destroy, :edit, :update] do
+  
     collection do
       get 'genre_children', defaults: { format: 'json' }
       get 'genre_grandchildren', defaults: { format: 'json' }
     end
     member do
+      get 'search'
       get 'genre_children', defaults: { format: 'json' }
       get 'genre_grandchildren', defaults: { format: 'json' }
     end
   end
+
 resources :purchase, only: [:index,:new]
 
 resources :creditcards, only:[:index, :new, :create,:destroy,:show] do
@@ -30,4 +40,5 @@ resources :creditcards, only:[:index, :new, :create,:destroy,:show] do
     post 'delete', to: 'creditcards#delete'
   end
 end
+
 end
