@@ -1,14 +1,7 @@
-.pickup{
-  padding: 60px 100px;
-  background-color: 100px;
-}
-
 .pickupContainer{
-  padding: 60px 100px; ;
+  padding: 80px 0 0 ;
   background-color: #f8f8f8;
   height: 100%;
-}
-
   .head{
     text-align: center;
     font-size: 28px;
@@ -30,27 +23,20 @@
       }
     }
   }
-
+}
     .productBox__productLists{
       width: 780px;
       margin: 26px auto;
       display: flex;
-      justify-content: space-around;
-
       &__productList{
-        width: 220px;
         display: flex;
-        float: left;
         &__goodsshow{
           background-color: $white;
           display: inline-block;
           &__image{
             width: 220px;
-            height: 150px;
-            position: relative;
-            overflow: hidden;
-            margin: 0;
-            z-index: auto;
+            height: 20px;
+
           }
             .productBox__productLists__productList__goodsshow__itemsphoto{
               top: 0;
@@ -86,6 +72,8 @@
               
               }
         
+
+
           .productBox__productLists__productList__body{
             background-color:$white;
             color: $gray;
