@@ -11,8 +11,8 @@
         .productBox__productLists__productList
           =link_to "#" ,class: "productBox__productLists__productList__goodsshow" do
             %figure.productBox__productLists__productList__goodsshow__image
-            -ft_images = item.images
-            =image_tag item.images[0], class: "productBox__productLists__productList__goodsshow__itemsphoto"
+              -ft_images = item.images
+              =image_tag item.images[0], class: "productBox__productLists__productList__goodsshow__itemsphoto"
             -# -if @items.buyer_id.present?
             -# .productBox__productLists__productList__goodsshow__itemsphoto__sold
             -#   .productBox__productLists__productList__goodsshow__itemsphoto__sold__inner
@@ -46,8 +46,8 @@
         .productBox__productLists__productList
           =link_to "items/show" ,class: "productBox__productLists__productList__goodsshow" do
             %figure.productBox__productLists__productList__goodsshow__image
-            -ft_images = item.images
-            =image_tag item.images[0], class: "productBox__productLists__productList__goodsshow__itemsphoto"
+              -ft_images = item.images
+              =image_tag item.images[0], class: "productBox__productLists__productList__goodsshow__itemsphoto"
             -# -if @items.buyer_id.present?
             -# .productBox__productLists__productList__goodsshow__itemsphoto__sold
             -#   .productBox__productLists__productList__goodsshow__itemsphoto__sold__inner
