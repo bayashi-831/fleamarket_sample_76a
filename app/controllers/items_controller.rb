@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
 
   def index
     @genre_parents = Genre.where("ancestry is null")
-    @items = Item.all
+    @items = Item.limit(5).order(updated_at: :desc)
     #ホームページのピックアップに記載される情報は商品名・価格・画像のみ
   end
 
@@ -59,6 +59,8 @@ class ItemsController < ApplicationController
     else
       flash.now[:alert] = '更新できませんでした'
       render :edit
+    end
+  end
       
   # 商品削除のアクション
   def destroy

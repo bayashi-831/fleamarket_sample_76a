@@ -7,15 +7,18 @@
         %h3.productBox__productHead__pickup__title
           新規投稿
     .productBox__productLists
-      .productBox__productLists__productList
-        - @items.each do |item| 
+      - @items.each do |item|
+        .productBox__productLists__productList
           =link_to "#" ,class: "productBox__productLists__productList__goodsshow" do
             %figure.productBox__productLists__productList__goodsshow__image
             -ft_images = item.images
             =image_tag item.images[0], class: "productBox__productLists__productList__goodsshow__itemsphoto"
-            .productBox__productLists__productList__goodsshow__itemsphoto__sold
-              .productBox__productLists__productList__goodsshow__itemsphoto__sold__inner
-                SOLD
+            -# -if @items.buyer_id.present?
+            -# .productBox__productLists__productList__goodsshow__itemsphoto__sold
+            -#   .productBox__productLists__productList__goodsshow__itemsphoto__sold__inner
+            -#     SOLD
+            -# この記述は、売り切れた商品を表示させるための機能です
+            -# 商品購入機能が実装され次第、呼び起こします
             .productBox__productLists__productList__body
               %h3.name
                 =item.name
@@ -39,8 +42,8 @@
         %h3.productBox__productHead__pickup__title
           アーカイバ
     .productBox__productLists
-      .productBox__productLists__productList
-        - @items.each do |item| 
+      - @items.each do |item|
+        .productBox__productLists__productList
           =link_to "items/show" ,class: "productBox__productLists__productList__goodsshow" do
             %figure.productBox__productLists__productList__goodsshow__image
             -ft_images = item.images
