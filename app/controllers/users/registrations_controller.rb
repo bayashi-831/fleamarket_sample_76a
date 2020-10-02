@@ -39,8 +39,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    
-    current_user.update(destination_update_params)
+    if current_user.destination.update(destination_update_params)
+      redirect_to root_path
+    else
+      render :destination
+    end
   end
 
   def destination
@@ -111,7 +114,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def destination_update_params
-    params.permit(:phone_number,
-            destination_attributes: [:destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :street_block, :mansion_name, :nickname])
+    params.require(:destination).permit(:phone_number,:destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :street_block, :mansion_name, :nickname, :introduction)
   end
 end
