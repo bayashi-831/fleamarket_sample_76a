@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_itme, only: [:show, :destroy, :edit, :update]
+  before_action :set_item, only: [:show, :destroy, :edit, :update]
 
 
   def index
@@ -59,6 +59,8 @@ class ItemsController < ApplicationController
     else
       flash.now[:alert] = '更新できませんでした'
       render :edit
+    end
+  end
       
   # 商品削除のアクション
   def destroy
@@ -87,7 +89,7 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :introduction, :genre_id, :brand, :condition_id, :delivery_fee_id, :pref_id, :day_id, :price, images: []).merge(seller_id: current_user.id)
   end
 
-  def set_itme
+  def set_item
     @item = Item.find(params[:id])
   end
 

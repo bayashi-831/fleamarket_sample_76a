@@ -204,7 +204,7 @@ $(document).on('turbolinks:load', function(){
     });
 
     //送信しようとした時
-    $('form').on('submit',function(e){
+    $('#form').on('submit',function(e){
       e.preventDefault();
       let imageLength = $('#output-box').children('h1').length;
       if(imageLength ==''){

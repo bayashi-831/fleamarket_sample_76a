@@ -26,10 +26,10 @@
     %ul.listsRight
       -if user_signed_in?
         %li.listsRight__item
-          = link_to "マイページ", "#" , id: "Btn"
+          = link_to "マイページ", mypage_path , id: "Btn"
         %li.listsRight__item
-          = link_to "ログアウト", destroy_user_session_path, method: :delete, id: "Btn"
-      -else
+          = link_to "ログアウト", users_sign_out_path, method: :delete, id: "Btn"
+      - else
         %li.listsRight__item
           = link_to "ログイン", new_user_session_path,  id: "Btn" 
         %li.listsRight__item
