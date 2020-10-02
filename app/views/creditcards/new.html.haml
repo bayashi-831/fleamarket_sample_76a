@@ -6,7 +6,7 @@
     .mypage__content__card
       %h3 クレジットカード情報入力
     .mypage__content__card__info
-      = form_with model: @creditcard, url: creditcards_path, local: true, html: { name: 'inputForm' } do |f|
+      = form_with model: @creditcard, url: creditcards_path, local: true, html: { name: 'inputForm' }, id: "card_token" do |f| 
         .field
           .field-label
             = f.label 'カード番号'
