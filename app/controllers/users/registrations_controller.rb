@@ -23,6 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def mypage
+
   end
 
   def logout_page
@@ -39,7 +40,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def update
     
-    current_user.update(user_params)
+    current_user.update(destination_update_params)
   end
 
   def destination
@@ -70,8 +71,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
-    def update_resource(resource, user_params)
-      resource.update_without_current_password(user_params)
+    def update_resource(resource, destination_update_params)
+      resource.update_without_current_password(destination_update_params)
     end
 
     def after_update_up_path_for(resource)
@@ -106,6 +107,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def user_params
     #params.require(:user).permit(:nickname, :email, :password, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday, :destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :street_block, :mansion_name)
     params.require(:user).permit(:email, :password, :password_confirmation, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday, :phone_number,
+            destination_attributes: [:destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :street_block, :mansion_name, :nickname])
+  end
+
+  def destination_update_params
+    params.permit(:phone_number,
             destination_attributes: [:destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :street_block, :mansion_name, :nickname])
   end
 end

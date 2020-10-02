@@ -6,7 +6,7 @@
     .account-page__inner--header.account-page__header
       %h3 会員情報入力
     .account-page__inner--main.user-form
-      = form_for(resource, as: resource_name, url: user_registration_path ) do |f|
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = devise_error_messages!
         = f.fields_for :destination do |destination|
           .field
