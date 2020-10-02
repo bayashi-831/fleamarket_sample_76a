@@ -72,8 +72,7 @@ class CreditcardsController < ApplicationController
 
   def delete #PayjpとCardデータベースを削除します
     
-    if @creditcard.blank?
-    else
+    if @creditcard.present?
       set_customer
       @customer.delete
       @creditcard.delete
@@ -85,7 +84,6 @@ private
 
   def set_item
     @item = Item.find(params[:id])
-    @user = current_user
   end
 
   def set_api_key
