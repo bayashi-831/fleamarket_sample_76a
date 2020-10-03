@@ -36,6 +36,8 @@ class ItemsController < ApplicationController
   # 商品詳細表示のアクション
   def show
     @item = Item.find(params[:id])
+    @comment = Comment.new
+    @comment = @item.comments.includes(:user)
   end
 
   private

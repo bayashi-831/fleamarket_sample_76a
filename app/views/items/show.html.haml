@@ -116,16 +116,27 @@
       
           
           .commentBox
-            %ul.commentContets
-            %form.new_comment{action: "#", method: "post", accept_charset: "UTF-8"}
-              %input{type: "hidden", value: "#" ,name: "utf8"}
-              %input{type: "hidden",name: "authenticity_token",value: "#"}
-              %textarea{required: "required",name: "comment[body]",id: "comment_body"}  
-              %p.comment
-                相手のことを考え丁寧なコメントを心がけましょう。<br>不快な言葉遣いなどは利用制限や退会処分となることがあります。
-              %button.commentBtn{type: "submit",name: "button"}
-                %i.fa.fa-comment
-                  コメントする
+            - if user_signed_in?
+              %ul.commentContets
+                = form_with model:[@item, @comment] ,class:"textarea", local: true do |f|
+                  = f.text_area :comment,id: "comment_body",rows: "2",placeholder: "コメントする"
+                  = f.submit "コメントする",class:"commentBtn"
+            - else
+              %strong
+                %p
+                  ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+             
+
+          .comments
+            %h4 ＜コメント一覧＞
+            - if @comments
+              - @comments.each do |comment|
+                - if comment.user_id == current_user.id
+                  %p
+                    %strong
+                      = link_to comment.user.nickname
+                    %span :
+                    = comment.comment
 
       %ul.links
         %li.test-link
