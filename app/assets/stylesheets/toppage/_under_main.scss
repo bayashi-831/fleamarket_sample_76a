@@ -1,8 +1,3 @@
-.pickup{
-  padding: 60px 100px;
-  background-color: 100px;
-}
-
 .pickupContainer{
   padding: 60px 100px ;
   background-color: #f8f8f8;
@@ -44,11 +39,6 @@
           position: relative;
           &__image{
             width: 220px;
-            height: 150px;
-            position: relative;
-            overflow: hidden;
-            margin: 0;
-            z-index: auto;
           }
             .productBox__productLists__productList__goodsshow__itemsphoto{
               top: 0;

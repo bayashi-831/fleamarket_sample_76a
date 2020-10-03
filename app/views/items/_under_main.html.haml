@@ -7,8 +7,8 @@
         %h3.productBox__productHead__pickup__title
           新規投稿
     .productBox__productLists
-      .productBox__productLists__productList
-        - @items.each do |item| 
+      - @items.each do |item|
+        .productBox__productLists__productList
           =link_to item_path(item.id) ,class: "productBox__productLists__productList__goodsshow" do
             %figure.productBox__productLists__productList__goodsshow__image
             -ft_images = item.images
