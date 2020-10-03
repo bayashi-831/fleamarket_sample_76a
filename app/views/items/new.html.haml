@@ -3,7 +3,7 @@
     = link_to image_tag('logo.png'), root_path, alt: 'Furima', height: '55', class: 'header-logo'
   %main
     %section.sell-container
-      = form_with id: form, model: @item, url: items_path do |f|
+      = form_with model: @item, url: items_path,id: "form" do |f|
 
         -# 画像部分
         .sell-container__content
