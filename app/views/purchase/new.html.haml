@@ -90,31 +90,54 @@
                   = link_to "不適切な商品の通報", "#"
       
           
+         
+              
+
+
+              /投稿フォーム
           .commentBox
-            %ul.commentContets
-            %form.new_comment{:action => "#", :method => "post", :accept_charset => "UTF-8"}
-              %input{:type => "hidden", :value => "#" ,:name => "utf8"}
-              %input{:type => "hidden",:name => "authenticity_token",:value => "#"}
-              %textarea{:required => "required",:name => "comment[body]",:id => "comment_body"}  
-              %p.comment
-                相手のことを考え丁寧なコメントを心がけましょう。<br>不快な言葉遣いなどは利用制限や退会処分となることがあります。
-              %button.commentBtn{:type => "submit",:name => "button"}
-                %i.fa.fa-comment
-                  コメントする
+            - if current_user
+              = form_with model:@comment ,class:"textarea", local: true do |f|
+                = f.text_area :comment,id: "comment_body",wrap: "soft"
+                = f.submit "コメントする",class:"commentBtn"
+            
+            - else
+              %strong
+                %p
+                  *** コメントの投稿には新規登録/ログインが必要です  ***
+            
+              -# %p.comment
+              -#   相手のことを考え丁寧なコメントを心がけましょう。<br>不快な言葉遣いなどは利用制限や退会処分となることがあります。
+              -# %button.commentBtn{:type => "submit",:name => "button"}
+              -#   %i.fa.fa-comment
+              -#     コメントする
 
-      %ul.links
-        %li.test-link
-          %a
-            %i.fa.fa-angle-left
-            = link_to "前の商品", "#"
-        %li
-          %a
-            = link_to "後ろの商品", "#"
-            %i.fa.fa-angle-right
+              /コメント一覧
+          .comments
+            %span ＜コメント一覧＞
+            - if @comment
+              - @comment.each do |comments|
+                %p
+                  %strong
+                    = link_to comments.user.nickname, "/users/#{comments.user_id}"
+                    = comments.comment
+                        
 
-      .relatedItems
-        %a
-          = link_to "レディースをもっと見る", "#"
+            
+
+          %ul.links
+            %li.test-link
+              %a
+                %i.fa.fa-angle-left
+                = link_to "前の商品", "#"
+            %li
+              %a
+                = link_to "後ろの商品", "#"
+                %i.fa.fa-angle-right
+
+          .relatedItems
+            %a
+              = link_to "レディースをもっと見る", "#"
 
 
 /footer
@@ -137,4 +160,4 @@
   .purchaseBtn
     %span.purchaseBtn__text
       出品する
-    =image_tag 'icon/icon_camera.png' 
+    =image_tag 'icon/icon_camera.png'

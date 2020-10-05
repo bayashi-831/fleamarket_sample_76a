@@ -30,7 +30,11 @@ resources :items, only: [:index, :show,:new,:create,:destroy, :edit, :update] do
     end
   end
 
-resources :purchase, only: [:index,:new]
+  resources :purchase, only: [:index,:new,:show]
+
+  resources :items do
+    resources :comments, only: :create
+  end
 
 resources :creditcards, only:[:index, :new, :create,:destroy,:show] do
   member do
