@@ -14,7 +14,7 @@
         .itemsbox-content
           - @items.each do |item|
             %section.itemsbox
-              =link_to "#" ,class: "itemsbox__foundgoods" do
+              =link_to item_path(item.id) ,class: "itemsbox__foundgoods" do
                 %figure.itemsbox__foundgoods__image
                 -ft_images = item.images
                 =image_tag item.images[0], class: "itemsbox__foundgoods__image__itemsphoto"
@@ -48,7 +48,7 @@
 .home-footer
   = render 'items/top-footer'
   
-=link_to "items/new" do
+=link_to "items/items/new" do
   .purchaseBtn
     %span.purchaseBtn__text
       出品する
