@@ -1,6 +1,7 @@
 class CreditcardsController < ApplicationController
   require 'payjp'
 
+  before_action :login_check, only: [:index,:show,:pay,:delete]
   before_action :set_item, only:[:show,:pay]
   before_action :take_card, only:[:index,:show,:pay,:delete]
   before_action :set_api_key
@@ -100,6 +101,13 @@ private
 
   def take_card
     @creditcard = Creditcard.find_by(user_id: current_user.id)
+  end
+
+  def login_check
+    unless user_signed_in?
+      flash[:alert] = "ログインしてください"
+      redirect_to new_user_session_path
+    end
   end
 
 end
