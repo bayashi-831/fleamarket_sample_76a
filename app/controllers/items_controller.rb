@@ -46,7 +46,11 @@ class ItemsController < ApplicationController
 
   # 商品編集のアクション
   def edit
-    @genre_parent =  Genre.where("ancestry is null")
+    if current_user.id == @item.seller_id
+      @genre_parent =  Genre.where("ancestry is null")
+    else
+      redirect_to root_path
+    end
   end
 
   def update
