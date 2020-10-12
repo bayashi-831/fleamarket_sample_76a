@@ -5,7 +5,7 @@ class CreditcardsController < ApplicationController
   before_action :set_item, only:[:show,:pay]
   before_action :take_card, only:[:index,:show,:pay,:delete]
   before_action :set_api_key
-
+  before_action :correct_user, only:[:show]
 
   def index
     if @creditcard.blank?
@@ -82,6 +82,17 @@ class CreditcardsController < ApplicationController
   end
 
 private
+
+  def correct_user
+    @item = Item.find(params[:id])
+      if @item.buyer_id == nil
+      else 
+        redirect_to(root_url) and return 
+      end
+      if @item.seller_id == current_user.id
+        redirect_to(root_path) and return
+      end  
+  end
 
   def set_item
     @item = Item.find(params[:id])

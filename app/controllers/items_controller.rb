@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
 
   def index
     @genre_parents = Genre.where("ancestry is null")
-    @items = Item.limit(5).order(updated_at: :desc)
+    @items = Item.limit(5).order(created_at: :desc)
     #ホームページのピックアップに記載される情報は商品名・価格・画像のみ
   end
 
