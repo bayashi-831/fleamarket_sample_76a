@@ -42,6 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if current_user.destination.update(destination_update_params)
       redirect_to root_path
     else
+      flash.now[:alert] = '必須項目を全て入力してください'
       render :destination
     end
   end
